@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>boas-praticas on meleu.sh</title>
+    <link>https://meleu.sh/tags/boas-praticas/</link>
+    <description>Recent content in boas-praticas on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sat, 14 May 2022 14:14:44 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/boas-praticas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mantenha a consistência na formatação do seu código com shfmt</title>
+      <link>https://meleu.sh/shfmt/</link>
+      <pubDate>Sat, 14 May 2022 14:14:44 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shfmt/</guid>
+      <description>Com o shfmt, além de manter o seu código com uma formatação consistente, você também pode tornar legível aquele código obscuro que você achou por aí.
+</description>
+    </item>
+    
+    <item>
+      <title>Use shellcheck e livre-se dos bugs no seu código antes mesmo de executá-lo</title>
+      <link>https://meleu.sh/shellcheck/</link>
+      <pubDate>Wed, 04 May 2022 14:00:31 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shellcheck/</guid>
+      <description>Com o shellcheck você vai se livrar de aborrecimentos com bugs que você jamais conseguiria prever!
+</description>
+    </item>
+    
+    <item>
+      <title>Como detectar precisamente onde seu script está quebrando</title>
+      <link>https://meleu.sh/trap-err/</link>
+      <pubDate>Fri, 15 Apr 2022 07:09:29 -0300</pubDate>
+      
+      <guid>https://meleu.sh/trap-err/</guid>
+      <description>Segredinhos obscuros do bash que permitirão que você poupe muito tempo quando precisar caçar bugs. Garanto que isso vai mudar sua vida.
+</description>
+    </item>
+    
+    <item>
+      <title>Deixe o bash mais rigoroso com seu script e evite dores de cabeça</title>
+      <link>https://meleu.sh/bash-rigoroso/</link>
+      <pubDate>Thu, 07 Apr 2022 11:08:14 -0300</pubDate>
+      
+      <guid>https://meleu.sh/bash-rigoroso/</guid>
+      <description>Habilite essas opções para deixar o bash mais exigente e interromper o seu script assim que algum problema for encontrado.
+</description>
+    </item>
+    
+    <item>
+      <title>Por que você deve usar aspas SEMPRE</title>
+      <link>https://meleu.sh/aspas-sempre/</link>
+      <pubDate>Sun, 26 Jan 2020 16:11:52 -0300</pubDate>
+      
+      <guid>https://meleu.sh/aspas-sempre/</guid>
+      <description>Não perca tempo pensando 🤔 &amp;#34;Será que tem problema deixar essa variável sem aspas?&amp;#34;. Simplesmente use-as SEMPRE!
+</description>
+    </item>
+    
+    <item>
+      <title>Como ler o conteúdo de um arquivo linha por linha em shell script</title>
+      <link>https://meleu.sh/percorrer-arquivo/</link>
+      <pubDate>Tue, 21 Jan 2020 16:00:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/percorrer-arquivo/</guid>
+      <description>Veja uma maneira robusta de percorrer um arquivo linha por linha. E sem cair nas armadilhas sutis que nos trazem surpresas desagradáveis.
+</description>
+    </item>
+    
+    <item>
+      <title>here string: evitando o uso desnecessário do echo</title>
+      <link>https://meleu.sh/here-strings/</link>
+      <pubDate>Fri, 17 Jan 2020 15:58:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/here-strings/</guid>
+      <description>É comum vermos códigos usando &amp;#39;echo $var | comando&amp;#39;. Nesse artigo veremos como a técnica here strings evita este uso desnecessário do echo, melhorando a legibilidade e performance do seu código (também veremos raras situações onde essa técnica não nos atende).
+</description>
+    </item>
+    
+    <item>
+      <title>O que o #! realmente faz?</title>
+      <link>https://meleu.sh/shebang/</link>
+      <pubDate>Sat, 21 Dec 2019 00:24:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shebang/</guid>
+      <description>O que exatamente acontece quando executamos um arquivo que começa com &amp;#39;#!&amp;#39; - também conhecido como shebang.
+</description>
+    </item>
+    
+  </channel>
+</rss>

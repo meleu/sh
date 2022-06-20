@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>codigo on meleu.sh</title>
+    <link>https://meleu.sh/tags/codigo/</link>
+    <description>Recent content in codigo on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Fri, 27 Mar 2020 16:21:54 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/codigo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Como criar um gráfico de barras no terminal listando os países com mais ocorrências de morte pelo Coronavirus</title>
+      <link>https://meleu.sh/coronavirus-ranking/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus-ranking/</guid>
+      <description>Escreveremos um script que mostra, no terminal, um gráfico em barras com o ranking dos países com mais casos de morte por COVID-19 (Coronavirus).Usaremos curl, jq, e criaremos o gráfico com o termgraph.
+</description>
+    </item>
+    
+    <item>
+      <title>Consulte os números de casos e mortes causadas pelo Coronavirus diretamente do terminal</title>
+      <link>https://meleu.sh/coronavirus/</link>
+      <pubDate>Tue, 17 Mar 2020 16:19:38 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus/</guid>
+      <description>Escreveremos um script para obter, diretamente no terminal, os números atualizados de casos e mortes causadas pelo COVID-19 (doença causada pelo Coronavirus). Usaremos alguns truques de curl, jq, arrays associativos e mais. Stay at /home!
+</description>
+    </item>
+    
+    <item>
+      <title>Como gerar uma URL curta no bitly direto da linha de comando</title>
+      <link>https://meleu.sh/url-shortener/</link>
+      <pubDate>Sat, 15 Feb 2020 16:17:04 -0300</pubDate>
+      
+      <guid>https://meleu.sh/url-shortener/</guid>
+      <description>Com o curl e uma conta no bitly.com podemos facilmente criar um script para termos nosso próprio &amp;#34;URL shortener&amp;#34; diretamente na linha de comando.
+</description>
+    </item>
+    
+    <item>
+      <title>Como converter de maiúsculas para minúsculas (e vice-versa) com bash</title>
+      <link>https://meleu.sh/tolower-toupper/</link>
+      <pubDate>Sat, 25 Jan 2020 16:09:01 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tolower-toupper/</guid>
+      <description>Em várias linguagens nós contamos com toLower()/toUpper() para converter strings para minúsculas/maiúsculas. No bash podemos ter essa mesma funcionalidade.
+</description>
+    </item>
+    
+    <item>
+      <title>Como ler o conteúdo de um arquivo linha por linha em shell script</title>
+      <link>https://meleu.sh/percorrer-arquivo/</link>
+      <pubDate>Tue, 21 Jan 2020 16:00:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/percorrer-arquivo/</guid>
+      <description>Veja uma maneira robusta de percorrer um arquivo linha por linha. E sem cair nas armadilhas sutis que nos trazem surpresas desagradáveis.
+</description>
+    </item>
+    
+    <item>
+      <title>explainshell: obtendo uma explicação rápida de uma linha de comando e cada um dos seus argumentos</title>
+      <link>https://meleu.sh/explainshell/</link>
+      <pubDate>Tue, 14 Jan 2020 15:53:34 -0300</pubDate>
+      
+      <guid>https://meleu.sh/explainshell/</guid>
+      <description>Escreva uma linha de comando inteira (pode incluir pipes e redirecionamentos) e veja uma explicação de cada comando e cada um de seus argumentos.
+</description>
+    </item>
+    
+    <item>
+      <title>Como abrir qualquer arquivo no programa correto a partir da linha de comando</title>
+      <link>https://meleu.sh/abrir-qualquer-arquivo/</link>
+      <pubDate>Tue, 07 Jan 2020 15:41:59 -0300</pubDate>
+      
+      <guid>https://meleu.sh/abrir-qualquer-arquivo/</guid>
+      <description>No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+</description>
+    </item>
+    
+    <item>
+      <title>Como fazer URL encode/decode com shell script</title>
+      <link>https://meleu.sh/urlencode/</link>
+      <pubDate>Sun, 05 Jan 2020 15:12:37 -0300</pubDate>
+      
+      <guid>https://meleu.sh/urlencode/</guid>
+      <description>Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+</description>
+    </item>
+    
+    <item>
+      <title>Como checar se um array contém um determinado elemento</title>
+      <link>https://meleu.sh/elemento-presente-no-array/</link>
+      <pubDate>Fri, 03 Jan 2020 05:00:59 -0300</pubDate>
+      
+      <guid>https://meleu.sh/elemento-presente-no-array/</guid>
+      <description>Quando estamos trabalhando com arrays em shell scripts é comum termos situações onde queremos saber se um determinado elemento está presente no array.
+O bash não tem um recurso específico para isso, portanto temos que arrumar um outro jeito. Neste artigo estudaremos três maneiras de alcançar esse objetivo.
+Método 1: infalível, porém &amp;ldquo;custoso&amp;rdquo; A maneira que logo vem a mente é percorrer todo o array através de um loop e checar se o elemento está presente lá.</description>
+    </item>
+    
+  </channel>
+</rss>

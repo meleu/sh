@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>fundamentos on meleu.sh</title>
+    <link>https://meleu.sh/tags/fundamentos/</link>
+    <description>Recent content in fundamentos on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sun, 22 May 2022 10:29:28 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/fundamentos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comece por aqui!</title>
+      <link>https://meleu.sh/comeco/</link>
+      <pubDate>Sun, 22 May 2022 10:29:28 -0300</pubDate>
+      
+      <guid>https://meleu.sh/comeco/</guid>
+      <description>Uma relação de material em português que eu recomendo para que você comece DO ZERO e chegue a um nível razoável de proficiência em programação shell.
+</description>
+    </item>
+    
+    <item>
+      <title>Como lidar com parâmetros passados na linha de comando em shell scripts</title>
+      <link>https://meleu.sh/parametros/</link>
+      <pubDate>Sun, 02 Feb 2020 16:14:09 -0300</pubDate>
+      
+      <guid>https://meleu.sh/parametros/</guid>
+      <description>Veremos como o bash recebe dados diretamente da linha de comando, e iremos além: veja a peculiaridade do &amp;#39;$0&amp;#39; (e receba um easter egg); entenda a real diferença entre o &amp;#39;$*&amp;#39; e o &amp;#39;$@&amp;#39;; e veja  como usar os comando &amp;#39;shift&amp;#39; e &amp;#39;set&amp;#39; para manipular os parâmetros.
+</description>
+    </item>
+    
+    <item>
+      <title>Por que você deve usar aspas SEMPRE</title>
+      <link>https://meleu.sh/aspas-sempre/</link>
+      <pubDate>Sun, 26 Jan 2020 16:11:52 -0300</pubDate>
+      
+      <guid>https://meleu.sh/aspas-sempre/</guid>
+      <description>Não perca tempo pensando 🤔 &amp;#34;Será que tem problema deixar essa variável sem aspas?&amp;#34;. Simplesmente use-as SEMPRE!
+</description>
+    </item>
+    
+    <item>
+      <title>Como converter de maiúsculas para minúsculas (e vice-versa) com bash</title>
+      <link>https://meleu.sh/tolower-toupper/</link>
+      <pubDate>Sat, 25 Jan 2020 16:09:01 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tolower-toupper/</guid>
+      <description>Em várias linguagens nós contamos com toLower()/toUpper() para converter strings para minúsculas/maiúsculas. No bash podemos ter essa mesma funcionalidade.
+</description>
+    </item>
+    
+    <item>
+      <title>here string: evitando o uso desnecessário do echo</title>
+      <link>https://meleu.sh/here-strings/</link>
+      <pubDate>Fri, 17 Jan 2020 15:58:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/here-strings/</guid>
+      <description>É comum vermos códigos usando &amp;#39;echo $var | comando&amp;#39;. Nesse artigo veremos como a técnica here strings evita este uso desnecessário do echo, melhorando a legibilidade e performance do seu código (também veremos raras situações onde essa técnica não nos atende).
+</description>
+    </item>
+    
+    <item>
+      <title>Uma dica simples que vai fazer você ganhar muito tempo quando estiver escrevendo shell scripts</title>
+      <link>https://meleu.sh/dica-result/</link>
+      <pubDate>Sat, 11 Jan 2020 15:51:17 -0300</pubDate>
+      
+      <guid>https://meleu.sh/dica-result/</guid>
+      <description>Veja como um simples alias pode te ajudar a economizar muito tempo quando estiver escrevendo e testando trechos dos seus scripts.
+</description>
+    </item>
+    
+    <item>
+      <title>Por que você deveria aprender sobre shell e linha de comando?</title>
+      <link>https://meleu.sh/por-que-shell/</link>
+      <pubDate>Fri, 10 Jan 2020 15:48:11 -0300</pubDate>
+      
+      <guid>https://meleu.sh/por-que-shell/</guid>
+      <description>O shell continua resistindo ao teste do tempo e é praticamente onipresente. Seja você um estudante ou profissional de qualquer área de TI (ou até mesmo aquele adolescente que sonha ser um hackão que vai dominar o mundo) aprender sobre a linha de comando certamente lhe trará grandes benefícios.
+</description>
+    </item>
+    
+    <item>
+      <title>O que o #! realmente faz?</title>
+      <link>https://meleu.sh/shebang/</link>
+      <pubDate>Sat, 21 Dec 2019 00:24:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shebang/</guid>
+      <description>O que exatamente acontece quando executamos um arquivo que começa com &amp;#39;#!&amp;#39; - também conhecido como shebang.
+</description>
+    </item>
+    
+  </channel>
+</rss>

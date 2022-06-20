@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>curl on meleu.sh</title>
+    <link>https://meleu.sh/tags/curl/</link>
+    <description>Recent content in curl on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Fri, 27 Mar 2020 16:21:54 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/curl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Como criar um gráfico de barras no terminal listando os países com mais ocorrências de morte pelo Coronavirus</title>
+      <link>https://meleu.sh/coronavirus-ranking/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus-ranking/</guid>
+      <description>Escreveremos um script que mostra, no terminal, um gráfico em barras com o ranking dos países com mais casos de morte por COVID-19 (Coronavirus).Usaremos curl, jq, e criaremos o gráfico com o termgraph.
+</description>
+    </item>
+    
+    <item>
+      <title>Consulte os números de casos e mortes causadas pelo Coronavirus diretamente do terminal</title>
+      <link>https://meleu.sh/coronavirus/</link>
+      <pubDate>Tue, 17 Mar 2020 16:19:38 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus/</guid>
+      <description>Escreveremos um script para obter, diretamente no terminal, os números atualizados de casos e mortes causadas pelo COVID-19 (doença causada pelo Coronavirus). Usaremos alguns truques de curl, jq, arrays associativos e mais. Stay at /home!
+</description>
+    </item>
+    
+    <item>
+      <title>Como gerar uma URL curta no bitly direto da linha de comando</title>
+      <link>https://meleu.sh/url-shortener/</link>
+      <pubDate>Sat, 15 Feb 2020 16:17:04 -0300</pubDate>
+      
+      <guid>https://meleu.sh/url-shortener/</guid>
+      <description>Com o curl e uma conta no bitly.com podemos facilmente criar um script para termos nosso próprio &amp;#34;URL shortener&amp;#34; diretamente na linha de comando.
+</description>
+    </item>
+    
+  </channel>
+</rss>
