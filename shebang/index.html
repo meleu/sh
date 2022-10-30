@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>O que o #! realmente faz? | meleu.sh</title>
+<meta name="keywords" content="fundamentos, boas-praticas">
+<meta name="description" content="O que exatamente acontece quando executamos um arquivo que começa com &#39;#!&#39; - também conhecido como shebang.
+">
+<meta name="author" content="meleu">
+<link rel="canonical" href="https://meleu.sh/shebang/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://meleu.sh/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://meleu.sh/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://meleu.sh/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://meleu.sh/apple-touch-icon.png">
+<link rel="mask-icon" href="https://meleu.sh/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="O que o #! realmente faz?" />
+<meta property="og:description" content="O que exatamente acontece quando executamos um arquivo que começa com &#39;#!&#39; - também conhecido como shebang.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://meleu.sh/shebang/" />
+<meta property="og:image" content="https://meleu.sh/img/shebang.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-12-21T00:24:42-03:00" />
+<meta property="article:modified_time" content="2019-12-21T00:24:42-03:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://meleu.sh/img/shebang.png" />
+<meta name="twitter:title" content="O que o #! realmente faz?"/>
+<meta name="twitter:description" content="O que exatamente acontece quando executamos um arquivo que começa com &#39;#!&#39; - também conhecido como shebang.
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://meleu.sh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "O que o #! realmente faz?",
+      "item": "https://meleu.sh/shebang/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "O que o #! realmente faz?",
+  "name": "O que o #! realmente faz?",
+  "description": "O que exatamente acontece quando executamos um arquivo que começa com '#!' - também conhecido como shebang.\n",
+  "keywords": [
+    "fundamentos", "boas-praticas"
+  ],
+  "articleBody": "Para tornar o primeiro post deste blog bem simbólico, vamos falar sobre a primeira coisa que devemos colocar em um shell script: o #! (vulgarmente chamado de shebang ou hashbang).\nComo o #! funciona? O #! shebang serve para dizer ao kernel qual será o interpretador a ser utilizado para executar os comandos presentes no arquivo.\nQuando executamos um arquivo que começa com #!, o kernel abre o arquivo e pega tudo que está escrito após o shebang até o final da linha. Em seguida ele tenta executar um comando com o conteúdo desta string adicionando como parâmetro o nome do próprio arquivo.\nPortanto se você tem arquivo executável chamado meuscript.sh, contendo um shell-script e começando com #!/bin/bash, quando você executa esse arquivo o kernel vai executar /bin/bash meuscript.sh.\nNos exemplos a seguir você verá isso muito claramente.\nVamos começar com o clássico hello.sh:\n#!/bin/bash echo \"Hello World!\" Quando é digitado no shell:\n$ ./hello.sh O kernel vai ver o #! e vai ler o que vem a seguir até o final da linha, neste caso /bin/bash. E então o que é executado é equivalente a você fazer isso no shell:\n$ /bin/bash hello.sh Demonstrações com o cat Vejamos agora um exemplo usando #!/bin/cat. O nome do arquivo é hashbangcat\n#!/bin/cat Todo o conteúdo deste arquivo será exibido quando ele for executado (inclusive o '#!/bin/cat'). O que é lido após o hashbang: /bin/cat Nome do arquivo: hashbangcat\nPortanto será executado: /bin/cat hashbangcat\nVeja:\n$ ./hashbangcat #!/bin/cat Todo o conteúdo deste arquivo será exibido quando ele for executado (inclusive o '#!/bin/cat'). com o echo Agora um exemplo que deixa bastante claro que as coisas acontecem exatamente como estou dizendo. Vamos usar #!/usr/bin/echo. O seguinte arquivo se chama hashbangecho:\n#!/usr/bin/echo O conteúdo deste arquivo *não* será exibido quando ele for executado. Agora vamos executar esse arquivo:\n$ ./hashbangecho ./hashbangecho A saída do comando foi o nome do arquivo pois o que realmente foi executado foi /usr/bin/echo ./hashbangecho.\nSe passarmos parâmetros, eles também serão repassados. Conforme veremos no exemplo a seguir.\ncom o ls Este arquivo se chama hashbangls.sh:\n#!/bin/ls O conteúdo aqui não importa. Agora ele sendo executado:\n$ ./hashbangls.sh ./hashbangls.sh $ ./hashbangls.sh notfound /bin/ls: cannot access 'notfound': No such file or directory ./hashbangls.sh $ ./hashbangls.sh -l -rwxr-xr-x 1 meleu meleu 41 Dec 20 14:42 ./hashbangls.sh Dúvidas Comuns Por que algumas pessoas usam #!/usr/bin/env bash? Provavelmente você já viu alguns scripts começando com #!/usr/bin/env bash onde normalmente você costuma ver #!/bin/bash. O motivo disso é que acredita-se que isso aumenta a portabilidade do seu script (mesmo que isso possa ser questionável).\nO comando env, se usado sem argumento algum, imprime uma (grande) lista com todas as variáveis de ambiente (environment variables). Mas se o env é usado seguido de um comando, ele executa aquele comando em uma outra instância do shell.\n🤔 - OK, mas como que isso influencia na portabilidade?!\nQuando você usa #!/bin/bash você está explicitamente dizendo que o executável bash está no diretório /bin/. Isso parece ser o padrão em todas as distribuições Linux, mas existem outros “sabores” de Unix onde isso pode não acontecer. Podem ocorrer casos, por exemplo, onde o bash pode estar presente em /usr/bin/. E nesse caso, se você tentar executar um script que tenha #!/bin/bash, o kernel não encontraria o arquivo /bin/bash e você iria receber um erro do tipo: bad interpreter: No such file or directory.\nPor outro lado, se você executa run bash, o comando env vai procurar pelo bash em seu $PATH, e então vai executar o primeiro bash que encontrar nos diretórios listados no $PATH. Normalmente o bash está em /bin/, mas também pode haver um caso em que seu script está sendo executado em um sistema que tem o bash em outro diretório (como /usr/bin/ ou /home/user/bin/).\nPortanto, para que o seu script possa ser usado nos mais diversos ambientes, algumas pessoas recomendam usar a técnica do #!/usr/bin/env bash.\n🤔 - Mas espera aí! O que garante que o env sempre estará em /usr/bin/?\nA resposta é simples: Não há garantia alguma! 😇\nA recomendação é baseada no que é comumente visto nos sistemas Unix. Mas ter o bash em /bin/ também é bastante comum.\nO importante de você entender aqui é: as duas opções funcionam na maioria dos casos porém nenhuma das duas é uma bala de prata que vai resolver tudo.\nSe você quer minha opinião, aí vai: as duas soluções são igualmente boas, escolha qualquer uma e seja feliz.\n Se é um projetinho pessoal seu: use o jeito que mais te agrada. Se é um projeto que já está em andamento: siga o que já é praticado pelo projeto (sem nenhuma neura de não ser o seu método favorito - lembre-se: as duas soluções são boas o suficiente).  🤨 - Tá bom meleu, mas qual das duas soluções você usa?\nEu costumo usar o #!/usr/bin/env bash.\nPrincipal motivo: quando eu estava contribuindo com o projeto RetroPie, esse era o método utilizado lá.\nPode ser que eu use #!/bin/bash aqui e acolá… Já cheguei a conclusão que as duas soluções são igualmente boas. Mas eu tendo a preferir utilizar o método com o env.\nExiste ainda alguns casos especiais, que não estão relacionados especificamente ao bash, onde o uso do #!/usr/bin/env é uma opção melhor: quando você quer executar um script Python ou usando NodeJS.\nVamos ver um exemplo bobo em NodeJS. Se eu quero executar um script simplesmente chamando o nome do arquivo, eu poderia criar um arquivo assim:\n#!/usr/bin/node console.log('Hello World from NodeJS'); O problema aqui é que eu estou partindo do princípio que o node está em /usr/bin/. Mas acontece que eu geralmente instalo o Node usando o Node Version Manager (ao invés de usar o node disponibilizado pelos apt-get da vida). Portanto meu node fica nesse diretório aqui:\n$ which node /home/meleu/.nvm/versions/node/v14.15.1/bin/node Eu jamais iria iniciar o meu script com um shebang tipo #!/home/meleu/.nvm/versions/node/v14.15.1/bin/node!\nPortanto uma solução bem interessante é usar #!/usr/bin/env node.\nE se eu não usar #! algum? Recomendo fortemente que você nunca escreva/execute um script sem um shebang #!.\nComo eu disse, o shebang diz ao seu kernel qual interpretador é para ser usado para executar os comandos presentes no arquivo. Se você executa um script sem especificar o interpretador, o shell vai disparar uma outra instância de si mesmo e tentar executar o script nessa nova instância. Isso significa que ele executará seja lá o que for que estiver escrito no arquivo, mesmo se for um script feito para ksh, zsh, dash, fish, node, python ou qualquer outra linguagem…\nPortanto sempre use um shebang nos seus scripts!.\nFontes  http://mywiki.wooledge.org/BashProgramming#Shebang https://wiki.bash-hackers.org/scripting/basics#the_shebang man env Aqui está um email de Dennis Ritchie de 1980, falando sobre esses “caracters mágicos”. Node.js shebang  ",
+  "wordCount" : "1119",
+  "inLanguage": "pt",
+  "image":"https://meleu.sh/img/shebang.png","datePublished": "2019-12-21T00:24:42-03:00",
+  "dateModified": "2019-12-21T00:24:42-03:00",
+  "author":{
+    "@type": "Person",
+    "name": "meleu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://meleu.sh/shebang/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "meleu.sh",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://meleu.sh/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://meleu.sh/" accesskey="h" title="meleu.sh (Alt + H)">meleu.sh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://meleu.sh/historico/" title="histórico">
+                    <span>histórico</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/busca/" title="busca">
+                    <span>busca</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/sobre/" title="sobre">
+                    <span>sobre</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://meleu.sh/">Home</a>&nbsp;»&nbsp;<a href="https://meleu.sh/posts/">Posts</a></div>
+    <h1 class="post-title">
+      O que o #! realmente faz?
+    </h1>
+    <div class="post-description">
+      O que exatamente acontece quando executamos um arquivo que começa com &#39;#!&#39; - também conhecido como shebang.
+
+    </div>
+    <div class="post-meta"><span title='2019-12-21 00:24:42 -0300 -0300'>dezembro 21, 2019</span>&nbsp;·&nbsp;6 minutos&nbsp;·&nbsp;meleu&nbsp;|&nbsp;<a href="https://github.com/meleu/meleudotsh/edit/master/content/posts/shebang.md" rel="noopener noreferrer" target="_blank">✏️ Edite este artigo</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/shebang.png" alt="shebang">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Conteúdo</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#como-o--funciona" aria-label="Como o #! funciona?">Como o <code>#!</code> funciona?</a></li>
+                <li>
+                    <a href="#demonstra%c3%a7%c3%b5es" aria-label="Demonstrações">Demonstrações</a><ul>
+                        
+                <li>
+                    <a href="#com-o-cat" aria-label="com o cat">com o <code>cat</code></a></li>
+                <li>
+                    <a href="#com-o-echo" aria-label="com o echo">com o <code>echo</code></a></li>
+                <li>
+                    <a href="#com-o-ls" aria-label="com o ls">com o <code>ls</code></a></li></ul>
+                </li>
+                <li>
+                    <a href="#d%c3%bavidas-comuns" aria-label="Dúvidas Comuns">Dúvidas Comuns</a><ul>
+                        
+                <li>
+                    <a href="#por-que-algumas-pessoas-usam-usrbinenv-bash" aria-label="Por que algumas pessoas usam #!/usr/bin/env bash?">Por que algumas pessoas usam <code>#!/usr/bin/env bash</code>?</a></li>
+                <li>
+                    <a href="#e-se-eu-n%c3%a3o-usar--algum" aria-label="E se eu não usar #! algum?">E se eu não usar <code>#!</code> algum?</a></li></ul>
+                </li>
+                <li>
+                    <a href="#fontes" aria-label="Fontes">Fontes</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Para tornar o primeiro post deste blog bem simbólico, vamos falar sobre a primeira coisa que devemos colocar em um shell script: o <code>#!</code> (vulgarmente chamado de <a href="https://en.wikipedia.org/wiki/Shebang_(Unix)">shebang</a> ou hashbang).</p>
+<h2 id="como-o--funciona">Como o <code>#!</code> funciona?<a hidden class="anchor" aria-hidden="true" href="#como-o--funciona">#</a></h2>
+<p>O <code>#!</code> shebang serve para dizer ao kernel qual será o interpretador a ser utilizado para executar os comandos presentes no arquivo.</p>
+<p>Quando executamos um arquivo que começa com <code>#!</code>, o kernel abre o arquivo e pega tudo que está escrito após o shebang até o final da linha. Em seguida ele tenta executar um comando com o conteúdo desta string adicionando como parâmetro o nome do próprio arquivo.</p>
+<p>Portanto se você tem arquivo executável chamado <code>meuscript.sh</code>, contendo um shell-script e começando com <code>#!/bin/bash</code>, quando você executa esse arquivo o kernel vai executar <code>/bin/bash meuscript.sh</code>.</p>
+<p>Nos exemplos a seguir você verá isso muito claramente.</p>
+<p>Vamos começar com o clássico <code>hello.sh</code>:</p>
+<pre tabindex="0"><code>#!/bin/bash
+echo &#34;Hello World!&#34;
+</code></pre><p>Quando é digitado no shell:</p>
+<pre tabindex="0"><code>$ ./hello.sh
+</code></pre><p>O kernel vai ver o <code>#!</code> e vai ler o que vem a seguir até o final da linha, neste caso <code>/bin/bash</code>. E então o que é executado é equivalente a você fazer isso no shell:</p>
+<pre tabindex="0"><code>$ /bin/bash hello.sh
+</code></pre><h2 id="demonstrações">Demonstrações<a hidden class="anchor" aria-hidden="true" href="#demonstrações">#</a></h2>
+<h3 id="com-o-cat">com o <code>cat</code><a hidden class="anchor" aria-hidden="true" href="#com-o-cat">#</a></h3>
+<p>Vejamos agora um exemplo usando <code>#!/bin/cat</code>. O nome do arquivo é <code>hashbangcat</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>#!/bin/cat
+</span></span><span style="display:flex;"><span>Todo o conteúdo deste arquivo será
+</span></span><span style="display:flex;"><span>exibido quando ele for executado
+</span></span><span style="display:flex;"><span>(inclusive o &#39;#!/bin/cat&#39;).
+</span></span></code></pre></div><p>O que é lido após o hashbang: <code>/bin/cat</code>
+Nome do arquivo: <code>hashbangcat</code></p>
+<p>Portanto será executado: <code>/bin/cat hashbangcat</code></p>
+<p>Veja:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ ./hashbangcat
+</span></span><span style="display:flex;"><span>#!/bin/cat
+</span></span><span style="display:flex;"><span>Todo o conteúdo deste arquivo será
+</span></span><span style="display:flex;"><span>exibido quando ele for executado
+</span></span><span style="display:flex;"><span>(inclusive o &#39;#!/bin/cat&#39;).
+</span></span></code></pre></div><h3 id="com-o-echo">com o <code>echo</code><a hidden class="anchor" aria-hidden="true" href="#com-o-echo">#</a></h3>
+<p>Agora um exemplo que deixa bastante claro que as coisas acontecem exatamente como estou dizendo. Vamos usar <code>#!/usr/bin/echo</code>. O seguinte arquivo se chama <code>hashbangecho</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>#!/usr/bin/echo
+</span></span><span style="display:flex;"><span>O conteúdo deste arquivo *não* será
+</span></span><span style="display:flex;"><span>exibido quando ele for executado.
+</span></span></code></pre></div><p>Agora vamos executar esse arquivo:</p>
+<pre tabindex="0"><code>$ ./hashbangecho
+./hashbangecho
+</code></pre><p>A saída do comando foi o nome do arquivo pois o que realmente foi executado foi <code>/usr/bin/echo ./hashbangecho</code>.</p>
+<p>Se passarmos parâmetros, eles também serão repassados. Conforme veremos no exemplo a seguir.</p>
+<h3 id="com-o-ls">com o <code>ls</code><a hidden class="anchor" aria-hidden="true" href="#com-o-ls">#</a></h3>
+<p>Este arquivo se chama <code>hashbangls.sh</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>#!/bin/ls
+</span></span><span style="display:flex;"><span>O conteúdo aqui não importa.
+</span></span></code></pre></div><p>Agora ele sendo executado:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ ./hashbangls.sh
+</span></span><span style="display:flex;"><span>./hashbangls.sh
+</span></span><span style="display:flex;"><span>$ ./hashbangls.sh notfound
+</span></span><span style="display:flex;"><span>/bin/ls: cannot access &#39;notfound&#39;: No such file or directory
+</span></span><span style="display:flex;"><span>./hashbangls.sh
+</span></span><span style="display:flex;"><span>$ ./hashbangls.sh -l
+</span></span><span style="display:flex;"><span>-rwxr-xr-x 1 meleu meleu 41 Dec 20 14:42 ./hashbangls.sh
+</span></span></code></pre></div><h2 id="dúvidas-comuns">Dúvidas Comuns<a hidden class="anchor" aria-hidden="true" href="#dúvidas-comuns">#</a></h2>
+<h3 id="por-que-algumas-pessoas-usam-usrbinenv-bash">Por que algumas pessoas usam <code>#!/usr/bin/env bash</code>?<a hidden class="anchor" aria-hidden="true" href="#por-que-algumas-pessoas-usam-usrbinenv-bash">#</a></h3>
+<p>Provavelmente você já viu alguns scripts começando com <code>#!/usr/bin/env bash</code> onde normalmente você costuma ver <code>#!/bin/bash</code>. O motivo disso é que acredita-se que isso aumenta a portabilidade do seu script (mesmo que isso possa ser questionável).</p>
+<p>O comando <code>env</code>, se usado sem argumento algum, imprime uma (grande) lista com todas as variáveis de ambiente (<strong>env</strong>ironment variables). Mas se o <code>env</code> é usado seguido de um comando, ele executa aquele comando em uma outra instância do shell.</p>
+<p>🤔 - <strong>OK, mas como que isso influencia na portabilidade?!</strong></p>
+<p>Quando você usa <code>#!/bin/bash</code> você está explicitamente dizendo que o executável <code>bash</code> está no diretório <code>/bin/</code>. Isso parece ser o padrão em todas as distribuições Linux, mas existem outros &ldquo;sabores&rdquo; de Unix onde isso pode não acontecer. Podem ocorrer casos, por exemplo, onde o <code>bash</code> pode estar presente em <code>/usr/bin/</code>. E nesse caso, se você tentar executar um script que tenha <code>#!/bin/bash</code>, o kernel não encontraria o arquivo <code>/bin/bash</code> e você iria receber um erro do tipo: <code>bad interpreter: No such file or directory</code>.</p>
+<p>Por outro lado, se você executa <code>run bash</code>, o comando <code>env</code> vai procurar pelo <code>bash</code> em seu <code>$PATH</code>, e então vai executar o primeiro <code>bash</code> que encontrar nos diretórios listados no <code>$PATH</code>. Normalmente o <code>bash</code> está em <code>/bin/</code>, mas também pode haver um caso em que seu script está sendo executado em um sistema que tem o <code>bash</code> em outro diretório (como <code>/usr/bin/</code> ou <code>/home/user/bin/</code>).</p>
+<p>Portanto, para que o seu script possa ser usado nos mais diversos ambientes, algumas pessoas recomendam usar a técnica do <code>#!/usr/bin/env bash</code>.</p>
+<p>🤔 - <strong>Mas espera aí! O que garante que o <code>env</code> sempre estará em <code>/usr/bin/</code>?</strong></p>
+<p>A resposta é simples: <strong>Não há garantia alguma!</strong> 😇</p>
+<p>A recomendação é baseada no que é comumente visto nos sistemas Unix. Mas ter o <code>bash</code> em <code>/bin/</code> também é bastante comum.</p>
+<p>O importante de você entender aqui é: as duas opções funcionam na maioria dos casos porém nenhuma das duas é uma bala de prata que vai resolver tudo.</p>
+<p>Se você quer minha opinião, aí vai: as duas soluções são igualmente boas, escolha qualquer uma e seja feliz.</p>
+<ul>
+<li>Se é um projetinho pessoal seu: use o jeito que mais te agrada.</li>
+<li>Se é um projeto que já está em andamento: siga o que já é praticado pelo projeto (sem nenhuma neura de não ser o seu método favorito - lembre-se: as duas soluções são boas o suficiente).</li>
+</ul>
+<p>🤨 - <strong>Tá bom meleu, mas qual das duas soluções você usa?</strong></p>
+<p>Eu costumo usar o <code>#!/usr/bin/env bash</code>.</p>
+<p>Principal motivo: quando eu estava contribuindo com o projeto <a href="https://github.com/RetroPie/RetroPie-Setup">RetroPie</a>, esse era o método utilizado lá.</p>
+<p>Pode ser que eu use <code>#!/bin/bash</code> aqui e acolá&hellip; Já cheguei a conclusão que as duas soluções são igualmente boas. Mas eu tendo a preferir utilizar o método com o <code>env</code>.</p>
+<p>Existe ainda alguns casos especiais, <strong>que não estão relacionados especificamente ao bash</strong>, onde o uso do <code>#!/usr/bin/env</code> é uma opção melhor: quando você quer executar um script Python ou usando NodeJS.</p>
+<p>Vamos ver um exemplo bobo em NodeJS. Se eu quero executar um script simplesmente chamando o nome do arquivo, eu poderia criar um arquivo assim:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/node
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Hello World from NodeJS&#39;</span>);
+</span></span></code></pre></div><p>O problema aqui é que eu estou partindo do princípio que o <code>node</code> está em <code>/usr/bin/</code>. Mas acontece que eu geralmente instalo o Node usando o <a href="https://github.com/nvm-sh/nvm">Node Version Manager</a> (ao invés de usar o node disponibilizado pelos <code>apt-get</code> da vida). Portanto meu node fica nesse diretório aqui:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-txt" data-lang="txt"><span style="display:flex;"><span>$ which node
+</span></span><span style="display:flex;"><span>/home/meleu/.nvm/versions/node/v14.15.1/bin/node
+</span></span></code></pre></div><p>Eu jamais iria iniciar o meu script com um shebang tipo <code>#!/home/meleu/.nvm/versions/node/v14.15.1/bin/node</code>!</p>
+<p>Portanto uma solução bem interessante é usar <code>#!/usr/bin/env node</code>.</p>
+<h3 id="e-se-eu-não-usar--algum">E se eu não usar <code>#!</code> algum?<a hidden class="anchor" aria-hidden="true" href="#e-se-eu-não-usar--algum">#</a></h3>
+<p>Recomendo fortemente que você <strong>nunca</strong> escreva/execute um script sem um shebang <code>#!</code>.</p>
+<p>Como eu disse, o shebang diz ao seu kernel qual interpretador é para ser usado para executar os comandos presentes no arquivo. Se você executa um script sem especificar o interpretador, o shell vai disparar uma outra instância de si mesmo e tentar executar o script nessa nova instância. Isso significa que ele executará seja lá o que for que estiver escrito no arquivo, mesmo se for um script feito para ksh, zsh, dash, fish, node, python ou qualquer outra linguagem&hellip;</p>
+<p>Portanto <strong>sempre use um shebang nos seus scripts!</strong>.</p>
+<h2 id="fontes">Fontes<a hidden class="anchor" aria-hidden="true" href="#fontes">#</a></h2>
+<ul>
+<li><a href="http://mywiki.wooledge.org/BashProgramming#Shebang">http://mywiki.wooledge.org/BashProgramming#Shebang</a></li>
+<li><a href="https://wiki.bash-hackers.org/scripting/basics#the_shebang">https://wiki.bash-hackers.org/scripting/basics#the_shebang</a></li>
+<li><code>man env</code></li>
+<li><a href="https://www.in-ulm.de/~mascheck/various/shebang/4.0BSD_newsys_sys1.c.html">Aqui está um email de Dennis Ritchie</a> de 1980, falando sobre esses &ldquo;caracters mágicos&rdquo;.</li>
+<li><a href="https://alexewerlof.medium.com/node-shebang-e1d4b02f731d">Node.js shebang</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://meleu.sh/tags/fundamentos/">fundamentos</a></li>
+      <li><a href="https://meleu.sh/tags/boas-praticas/">boas-praticas</a></li>
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on twitter"
+        href="https://twitter.com/intent/tweet/?text=O%20que%20o%20%23%21%20realmente%20faz%3f&amp;url=https%3a%2f%2fmeleu.sh%2fshebang%2f&amp;hashtags=fundamentos%2cboas-praticas">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmeleu.sh%2fshebang%2f&amp;title=O%20que%20o%20%23%21%20realmente%20faz%3f&amp;summary=O%20que%20o%20%23%21%20realmente%20faz%3f&amp;source=https%3a%2f%2fmeleu.sh%2fshebang%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fmeleu.sh%2fshebang%2f&title=O%20que%20o%20%23%21%20realmente%20faz%3f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fmeleu.sh%2fshebang%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on whatsapp"
+        href="https://api.whatsapp.com/send?text=O%20que%20o%20%23%21%20realmente%20faz%3f%20-%20https%3a%2f%2fmeleu.sh%2fshebang%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share O que o #! realmente faz? on telegram"
+        href="https://telegram.me/share/url?text=O%20que%20o%20%23%21%20realmente%20faz%3f&amp;url=https%3a%2f%2fmeleu.sh%2fshebang%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://meleu.sh/">meleu.sh</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

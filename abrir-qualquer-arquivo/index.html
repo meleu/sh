@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Como abrir qualquer arquivo no programa correto a partir da linha de comando | meleu.sh</title>
+<meta name="keywords" content="codigo">
+<meta name="description" content="No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+">
+<meta name="author" content="meleu">
+<link rel="canonical" href="https://meleu.sh/abrir-qualquer-arquivo/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://meleu.sh/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://meleu.sh/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://meleu.sh/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://meleu.sh/apple-touch-icon.png">
+<link rel="mask-icon" href="https://meleu.sh/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Como abrir qualquer arquivo no programa correto a partir da linha de comando" />
+<meta property="og:description" content="No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://meleu.sh/abrir-qualquer-arquivo/" />
+<meta property="og:image" content="https://meleu.sh/img/abrir-qualquer-arquivo.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-07T15:41:59-03:00" />
+<meta property="article:modified_time" content="2020-01-07T15:41:59-03:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://meleu.sh/img/abrir-qualquer-arquivo.png" />
+<meta name="twitter:title" content="Como abrir qualquer arquivo no programa correto a partir da linha de comando"/>
+<meta name="twitter:description" content="No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://meleu.sh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Como abrir qualquer arquivo no programa correto a partir da linha de comando",
+      "item": "https://meleu.sh/abrir-qualquer-arquivo/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como abrir qualquer arquivo no programa correto a partir da linha de comando",
+  "name": "Como abrir qualquer arquivo no programa correto a partir da linha de comando",
+  "description": "No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.\n",
+  "keywords": [
+    "codigo"
+  ],
+  "articleBody": "Um recurso que facilita muito a vida do usuário quando usando um gerenciador de arquivos no ambiente gráfico é o fato de poder dar um duplo clique no ícone e o sistema já saber qual programa utilizar para abrí-lo.\nConhecendo o xdg-open Quando estamos utilizando o terminal dentro de um ambiente gráfico podemos ter uma funcionalidade similar usando o comando xdg-open em sistemas Linux.\nEquivalentes ao comando xdg-open em outros ambientes:\n MacOS: open Windows/Cygwin: cygstart Android/termux: xdg-open.  Nos exemplos abaixo vou usar o xdg-open, mas se você estiver em outro ambiente, substitua-o pelo comando equivalente.\nSe tiver com uma janelinha do terminal aberta, basta usar xdg-open arquivo.ext que o seu ambiente desktop vai detectar qual é o programa padrão para abrir o arquivo.ext.\nE uma coisa interessante é que isso também serve para URLs, fazendo com que o seu navegador padrão seja aberto tentando visitar a URL que passada como parâmetro. Exemplo:\nxdg-open 'https://meleu.sh/' Eis uma tradução livre da descrição que vemos na própria manpage do xdg-open:\n xdg-open abre um arquivo ou URL na aplicação preferida do usuário. Se uma URL for fornecida, a URL será aberta no browser padrão. Se um arquivo for fornecido, o arquivo será aberto na aplicação padrão para arquivos daquele tipo.\n A disponibilidade deste comando vai depender do ambiente Desktop que você está utilizando e se ele segue os padrões do freedesktop.org.\nO freedesktop é um projeto focado em criar especificações para facilitar a interoperabiliade e compartilhamento de tecnologia para sistemas gráficos e de desktop de código aberto.\nUma pequena (e incompleta) lista dos ambientes desktop que aderem aos padrões do freedesktop pode ser encontrada aqui: https://www.freedesktop.org/wiki/Desktops/\nMuitas das especificações produzidas pelo freedesktop recebem o nome XDG, uma sigla para Cross-Desktop Group. E muitos aplicativos feitos para implementar estas especificações começam com o prefixo xdg-. Experimente ir no seu terminal e digitar xdg- e pressionar TAB TAB, que você verá uma lista de aplicativos disponíveis.\nSe tiver mais interesse nesse assunto, siga os links da seção Fontes.\nBônus Vou aproveitar o tema e mostrar uma breve função onde usamos a variável builtin $OSTYPE, específica do bash, para detectar o Sistema Operacional. Outra opção é utilizar uname, mas eu gosto de usar soluções em bash puro. :)\nQuando você chama a função openFile, ela vai detectar em qual Sistema Operacional você está e executa o comando correspondente.\nÉ um exemplo bem simples. Se precisar de algo mais robusto é preciso trabalhar um pouco mais nesse código.\n# $OSTYPE é uma variável embutida do bash pode # ser uma maneira interessante de detectar o SO openFile() { local args=\"$@\" case \"$OSTYPE\" in \"cygwin\"*) cygstart \"$args\" ;; \"darwin\"*) # MacOS open \"$args\" ;; *) xdg-open \"$args\" ;; esac } Algumas opções válidas para $OSTYPE que vi em uma postagem no GitHub:\n   Sistema Operacional $OSTYPE     Linux linux-gnu   Cygwin cygwin   bash no Windows 10 linux-gnu   OpenBSD openbsd*   FreeBSD FreeBSD   NetBSD netbsd   Mac OS darwin*   iOS darwin9   Solaris solaris*   Android (termux) linux-android*   Android linux-gnu   Haiku OS haiku    Fontes  https://wiki.archlinux.org/index.php/Xdg-utils man xdg-open https://www.freedesktop.org/wiki/Specifications/ man bash, descrição de OSTYPE https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script  ",
+  "wordCount" : "507",
+  "inLanguage": "pt",
+  "image":"https://meleu.sh/img/abrir-qualquer-arquivo.png","datePublished": "2020-01-07T15:41:59-03:00",
+  "dateModified": "2020-01-07T15:41:59-03:00",
+  "author":{
+    "@type": "Person",
+    "name": "meleu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://meleu.sh/abrir-qualquer-arquivo/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "meleu.sh",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://meleu.sh/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://meleu.sh/" accesskey="h" title="meleu.sh (Alt + H)">meleu.sh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://meleu.sh/historico/" title="histórico">
+                    <span>histórico</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/busca/" title="busca">
+                    <span>busca</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/sobre/" title="sobre">
+                    <span>sobre</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://meleu.sh/">Home</a>&nbsp;»&nbsp;<a href="https://meleu.sh/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Como abrir qualquer arquivo no programa correto a partir da linha de comando
+    </h1>
+    <div class="post-description">
+      No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+
+    </div>
+    <div class="post-meta"><span title='2020-01-07 15:41:59 -0300 -0300'>janeiro 7, 2020</span>&nbsp;·&nbsp;3 minutos&nbsp;·&nbsp;meleu&nbsp;|&nbsp;<a href="https://github.com/meleu/meleudotsh/edit/master/content/posts/abrir-qualquer-arquivo.md" rel="noopener noreferrer" target="_blank">✏️ Edite este artigo</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/abrir-qualquer-arquivo.png" alt="xdg-open">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Conteúdo</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#conhecendo-o-xdg-open" aria-label="Conhecendo o xdg-open">Conhecendo o <code>xdg-open</code></a></li>
+                <li>
+                    <a href="#b%c3%b4nus" aria-label="Bônus">Bônus</a></li>
+                <li>
+                    <a href="#fontes" aria-label="Fontes">Fontes</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Um recurso que facilita muito a vida do usuário quando usando um gerenciador de arquivos no ambiente gráfico é o fato de poder dar um duplo clique no ícone e o sistema já saber qual programa utilizar para abrí-lo.</p>
+<h2 id="conhecendo-o-xdg-open">Conhecendo o <code>xdg-open</code><a hidden class="anchor" aria-hidden="true" href="#conhecendo-o-xdg-open">#</a></h2>
+<p>Quando estamos utilizando o terminal <strong>dentro de um ambiente gráfico</strong> podemos ter uma funcionalidade similar usando o comando <code>xdg-open</code> em sistemas Linux.</p>
+<p>Equivalentes ao comando <code>xdg-open</code> em outros ambientes:</p>
+<ul>
+<li>MacOS: <code>open</code></li>
+<li>Windows/<a href="https://cygwin.com/">Cygwin</a>: <code>cygstart</code></li>
+<li>Android/<a href="https://termux.com/">termux</a>: <code>xdg-open</code>.</li>
+</ul>
+<p>Nos exemplos abaixo vou usar o <code>xdg-open</code>, mas se você estiver em outro ambiente, substitua-o pelo comando equivalente.</p>
+<p>Se tiver com uma janelinha do terminal aberta, basta usar <code>xdg-open arquivo.ext</code> que o seu ambiente desktop vai detectar qual é o programa padrão para abrir o <code>arquivo.ext</code>.</p>
+<p>E uma coisa interessante é que isso também serve para URLs, fazendo com que o seu navegador padrão seja aberto tentando visitar a URL que passada como parâmetro. Exemplo:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>xdg-open <span style="color:#e6db74">&#39;https://meleu.sh/&#39;</span>
+</span></span></code></pre></div><p>Eis uma tradução livre da descrição que vemos na própria manpage do <code>xdg-open</code>:</p>
+<blockquote>
+<p>xdg-open abre um arquivo ou URL na aplicação preferida do usuário. Se uma URL for fornecida, a URL será aberta no browser padrão. Se um arquivo for fornecido, o arquivo será aberto na aplicação padrão para arquivos daquele tipo.</p>
+</blockquote>
+<p>A disponibilidade deste comando vai depender do ambiente Desktop que você está utilizando e se ele segue os padrões do <a href="https://www.freedesktop.org/">freedesktop.org</a>.</p>
+<p>O freedesktop é um projeto focado em criar especificações para facilitar a interoperabiliade e compartilhamento de tecnologia para sistemas gráficos e de desktop de código aberto.</p>
+<p>Uma pequena (e incompleta) lista dos ambientes desktop que aderem aos padrões do freedesktop pode ser encontrada aqui: <a href="https://www.freedesktop.org/wiki/Desktops/">https://www.freedesktop.org/wiki/Desktops/</a></p>
+<p>Muitas das especificações produzidas pelo freedesktop recebem o nome XDG, uma sigla para <em>Cross-Desktop Group</em>. E muitos aplicativos feitos para implementar estas especificações começam com o prefixo <code>xdg-</code>. Experimente ir no seu terminal e digitar <code>xdg-</code> e pressionar TAB TAB, que você verá uma lista de aplicativos disponíveis.</p>
+<p>Se tiver mais interesse nesse assunto, siga os links da seção <a href="#fontes">Fontes</a>.</p>
+<h2 id="bônus">Bônus<a hidden class="anchor" aria-hidden="true" href="#bônus">#</a></h2>
+<p>Vou aproveitar o tema e mostrar uma breve função onde usamos a variável <em>builtin</em> <code>$OSTYPE</code>, específica do bash, para detectar o Sistema Operacional. Outra opção é utilizar <code>uname</code>, mas eu gosto de usar soluções em <a href="http://meleu.sh/tags/bash-puro">bash puro</a>. :)</p>
+<p>Quando você chama a função <code>openFile</code>, ela vai detectar em qual Sistema Operacional você está e executa o comando correspondente.</p>
+<p>É um exemplo bem simples. Se precisar de algo mais robusto é preciso trabalhar um pouco mais nesse código.</p>
+<pre tabindex="0"><code># $OSTYPE é uma variável embutida do bash pode
+# ser uma maneira interessante de detectar o SO
+openFile() {
+  local args=&#34;$@&#34;
+
+  case &#34;$OSTYPE&#34; in
+    &#34;cygwin&#34;*)
+      cygstart &#34;$args&#34;
+      ;;
+    &#34;darwin&#34;*) # MacOS
+      open &#34;$args&#34;
+      ;;
+    *)
+      xdg-open &#34;$args&#34;
+      ;;
+  esac
+}
+</code></pre><p>Algumas opções válidas para <code>$OSTYPE</code> que vi em uma <a href="https://github.com/dylanaraps/neofetch/issues/433#issue-188679046">postagem no GitHub</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Sistema Operacional</th>
+<th><code>$OSTYPE</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Linux</td>
+<td><code>linux-gnu</code></td>
+</tr>
+<tr>
+<td>Cygwin</td>
+<td><code>cygwin</code></td>
+</tr>
+<tr>
+<td>bash no Windows 10</td>
+<td><code>linux-gnu</code></td>
+</tr>
+<tr>
+<td>OpenBSD</td>
+<td><code>openbsd*</code></td>
+</tr>
+<tr>
+<td>FreeBSD</td>
+<td><code>FreeBSD</code></td>
+</tr>
+<tr>
+<td>NetBSD</td>
+<td><code>netbsd</code></td>
+</tr>
+<tr>
+<td>Mac OS</td>
+<td><code>darwin*</code></td>
+</tr>
+<tr>
+<td>iOS</td>
+<td><code>darwin9</code></td>
+</tr>
+<tr>
+<td>Solaris</td>
+<td><code>solaris*</code></td>
+</tr>
+<tr>
+<td>Android (termux)</td>
+<td><code>linux-android*</code></td>
+</tr>
+<tr>
+<td>Android</td>
+<td><code>linux-gnu</code></td>
+</tr>
+<tr>
+<td>Haiku OS</td>
+<td><code>haiku</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="fontes">Fontes<a hidden class="anchor" aria-hidden="true" href="#fontes">#</a></h2>
+<ul>
+<li><a href="https://wiki.archlinux.org/index.php/Xdg-utils">https://wiki.archlinux.org/index.php/Xdg-utils</a></li>
+<li><code>man xdg-open</code></li>
+<li><a href="https://www.freedesktop.org/wiki/Specifications/">https://www.freedesktop.org/wiki/Specifications/</a></li>
+<li><code>man bash</code>, descrição de <code>OSTYPE</code></li>
+<li><a href="https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script">https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://meleu.sh/tags/codigo/">codigo</a></li>
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on twitter"
+        href="https://twitter.com/intent/tweet/?text=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando&amp;url=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f&amp;hashtags=codigo">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f&amp;title=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando&amp;summary=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando&amp;source=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f&title=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on whatsapp"
+        href="https://api.whatsapp.com/send?text=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando%20-%20https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como abrir qualquer arquivo no programa correto a partir da linha de comando on telegram"
+        href="https://telegram.me/share/url?text=Como%20abrir%20qualquer%20arquivo%20no%20programa%20correto%20a%20partir%20da%20linha%20de%20comando&amp;url=https%3a%2f%2fmeleu.sh%2fabrir-qualquer-arquivo%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://meleu.sh/">meleu.sh</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

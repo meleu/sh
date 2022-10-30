@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | meleu.sh</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - meleu.sh">
+<meta name="author" content="meleu">
+<link rel="canonical" href="https://meleu.sh/posts/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://meleu.sh/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://meleu.sh/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://meleu.sh/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://meleu.sh/apple-touch-icon.png">
+<link rel="mask-icon" href="https://meleu.sh/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="https://meleu.sh/posts/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Posts" />
+<meta property="og:description" content="meleu.sh - Linha de comando e shell script. Foco no conteúdo e sem distrações.
+" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://meleu.sh/posts/" /><meta property="og:image" content="https://meleu.sh/img/por-que-shell.gif"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://meleu.sh/img/por-que-shell.gif"/>
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="meleu.sh - Linha de comando e shell script. Foco no conteúdo e sem distrações.
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://meleu.sh/posts/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://meleu.sh/" accesskey="h" title="meleu.sh (Alt + H)">meleu.sh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://meleu.sh/historico/" title="histórico">
+                    <span>histórico</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/busca/" title="busca">
+                    <span>busca</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/sobre/" title="sobre">
+                    <span>sobre</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://meleu.sh/">Home</a></div>
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/url-shortener.png" alt="função shortener()">
+</figure>
+  <header class="entry-header">
+    <h2>Como gerar uma URL curta no bitly direto da linha de comando
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Um conhecido serviço de “encurtamento de URL” que existe na web é o https://bitly.com. Neste site podemos criar versões mais curtas para URLs grandes. Se você já se deparou com links do tipo bit.ly/AlgumaCoisa, sabe do que estou falando, certo?
+Neste artigo vamos usar a API do bitly.com através do curl e assim criar o nosso próprio “URL shortener” para usar direto da linha de comando.
+Se você não conhece o curl, trata-se de um comando bastante poderoso e útil, que serve para transferir dados de/para servidores usando diversos protocolos (HTTP, HTTPS, FTP, TELNET, e muitos outros)....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-02-15 16:17:04 -0300 -0300'>fevereiro 15, 2020</span>&nbsp;·&nbsp;6 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Como gerar uma URL curta no bitly direto da linha de comando" href="https://meleu.sh/url-shortener/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/parametros.png" alt="parametros no shell script">
+</figure>
+  <header class="entry-header">
+    <h2>Como lidar com parâmetros passados na linha de comando em shell scripts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>O shell script é uma “linguagem” muito permissiva. Não é necessário muito conhecimento pra você começar a fazer algumas coisas legais. Isso é bom, fazer coisas legais é divertido, mas também tem um perigo embutido: você pode acabar ir levando adiante uma prática ruim que funciona em determinado cenário mas que em outro pode trazer consequências indesejadas (a não utilização de aspas duplas pra proteger suas variáveis é um exemplo dessas práticas ruins)....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-02-02 16:14:09 -0300 -0300'>fevereiro 2, 2020</span>&nbsp;·&nbsp;9 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Como lidar com parâmetros passados na linha de comando em shell scripts" href="https://meleu.sh/parametros/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/aspas-sempre.png" alt="problemas ao não usar aspas">
+</figure>
+  <header class="entry-header">
+    <h2>Por que você deve usar aspas SEMPRE
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Esse post é para tentar convencê-los de que suas variáveis devem ser protegidas com aspas duplas SEMPRE. E quando eu digo sempre, é sempre mesmo. Até mesmo em $(subshells).
+OK… Tá bom. As vezes precisamos referenciar variáveis sem aspas, mas faça isso só quando for estritamente necessário. E quando isso acontecer, deixe um comentário falando sobre esta necessidade.
+Insisto: Não fique perdendo tempo pensando “Uhmm… Será que tem problema se eu deixar essa variável sem aspas?...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-26 16:11:52 -0300 -0300'>janeiro 26, 2020</span>&nbsp;·&nbsp;4 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Por que você deve usar aspas SEMPRE" href="https://meleu.sh/aspas-sempre/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/tolower-toupper.png" alt="função camelCase()">
+</figure>
+  <header class="entry-header">
+    <h2>Como converter de maiúsculas para minúsculas (e vice-versa) com bash
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Desde a versão 4.0 do bash (lançada em 2009) nós temos disponível alguns operadores para lidar com case conversion.
+Nos exemplos a seguir imagine que var contém uma string:
+ ${var,,}: conteúdo de var todo em minúsculas ${var^^}: conteúdo de var todo em maiúsculas ${var,}: primeira letra de var minúscula ${var^}: primeira letra de var maiúscula ${var~~}: inverte de maiúsculo para minúsculo, ou vice-versa, todo o conteúdo de var ${var~}: inverte de maiúsculo para minúsculo, ou vice-versa, a primeira letra de var  Funções Para Case Conversion De posse desse conhecimento, vamos fazer nossas versões bash de toLower() e toUpper() e, por que não?...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-25 16:09:01 -0300 -0300'>janeiro 25, 2020</span>&nbsp;·&nbsp;3 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Como converter de maiúsculas para minúsculas (e vice-versa) com bash" href="https://meleu.sh/tolower-toupper/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/percorrer-arquivo.png" alt="loop while para percorrer o arquivo linha a linha">
+</figure>
+  <header class="entry-header">
+    <h2>Como ler o conteúdo de um arquivo linha por linha em shell script
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Uma das coisas que você certamente vai encarar um dia como um programador de shell scripts é a necessidade de percorrer um arquivo inteiro lendo cada linha e fazer algo com este conteúdo. Veremos neste artigo como fazer isso de maneira segura, robusta e evitando as possíveis armadilhas que podem aparecer no caminho.
+Pra adiantar seu lado, vou logo de cara lhe dar a solução que eu considero mais robusta. Em seguida explica cada detalhe dessa estrutura....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-21 16:00:42 -0300 -0300'>janeiro 21, 2020</span>&nbsp;·&nbsp;9 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Como ler o conteúdo de um arquivo linha por linha em shell script" href="https://meleu.sh/percorrer-arquivo/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/here-strings.png" alt="exemplo de here strings">
+</figure>
+  <header class="entry-header">
+    <h2>here string: evitando o uso desnecessário do echo
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>O que é um here string? Um here string nada mais é do que uma maneira de transformar uma string na entrada padrão (stdin) de um programa. Normalmente utilizamos essa técnica pegando a string contida em uma variável.
+A sintaxe, pegando de uma variável, é a seguinte:
+COMMAND &lt;&lt;&lt; &#34;$VAR&#34; Onde o conteúdo variável $VAR será colocado na entrada padrão do COMMAND.
+Usar a técnica do here string evita o uso de estruturas como:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-17 15:58:54 -0300 -0300'>janeiro 17, 2020</span>&nbsp;·&nbsp;3 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to here string: evitando o uso desnecessário do echo" href="https://meleu.sh/here-strings/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/explainshell.png" alt="screenshot de explainshell.com">
+</figure>
+  <header class="entry-header">
+    <h2>explainshell: obtendo uma explicação rápida de uma linha de comando e cada um dos seus argumentos
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Recentemente conheci mais um site que certamente é muito útil para iniciantes e até mesmo para usuários de linha de comando já iniciados: https://explainshell.com/
+conheça o https://explainshell.com Na página inicial deste site tem um campo de texto onde você pode digitar uma linha de comando inteira (incluindo até mesmo | pipes e &lt;&lt; redirecionamentos &gt;) e obter uma explicação do(s) comando(s) e de cada um dos argumentos utilizados.
+Por exemplo, clique neste link para ver a explicação de find / -type d -name deleteme 2&gt;/dev/null....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-14 15:53:34 -0300 -0300'>janeiro 14, 2020</span>&nbsp;·&nbsp;4 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to explainshell: obtendo uma explicação rápida de uma linha de comando e cada um dos seus argumentos" href="https://meleu.sh/explainshell/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/dica-result.png" alt="dica result">
+</figure>
+  <header class="entry-header">
+    <h2>Uma dica simples que vai fazer você ganhar muito tempo quando estiver escrevendo shell scripts
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Quando estamos escrevendo um shell script é muito comum precisarmos verificar se um teste resultará em verdadeiro ou falso. Fazer esses testes muitas vezes é tedioso, principalmente quando o comando não gera saída alguma (ou seja, não imprime nada na tela).
+Veremos aqui como lidar com isso de maneira simples, fácil e muito prática.
+A origem da ideia Geralmente eu costumo fazer essa checagem, assim:
+$ comando &amp;&amp; echo verdadeiro || echo falso O comando no exemplo acima está representando o comando a ser executado....</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-11 15:51:17 -0300 -0300'>janeiro 11, 2020</span>&nbsp;·&nbsp;4 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Uma dica simples que vai fazer você ganhar muito tempo quando estiver escrevendo shell scripts" href="https://meleu.sh/dica-result/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/por-que-shell.gif" alt="prompt">
+</figure>
+  <header class="entry-header">
+    <h2>Por que você deveria aprender sobre shell e linha de comando?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>No ramo de TI as coisas mudam de uma maneira absurdamente rápida! Por mais que você tente se manter atualizado, as tecnologias da moda estão sempre mudando.
+Se você é um aspirante a programador, provavelmente passa por aquela situação de indecisão paralisante. Fica naquele receio de despediçar o seu tempo estudando tecnologias que sairão de moda e no final do dia acabou não estudando coisa alguma.
+Na sua cabeça rolam perguntas como:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-10 15:48:11 -0300 -0300'>janeiro 10, 2020</span>&nbsp;·&nbsp;2 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Por que você deveria aprender sobre shell e linha de comando?" href="https://meleu.sh/por-que-shell/"></a>
+</article>
+
+<article class="post-entry"> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/abrir-qualquer-arquivo.png" alt="xdg-open">
+</figure>
+  <header class="entry-header">
+    <h2>Como abrir qualquer arquivo no programa correto a partir da linha de comando
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Um recurso que facilita muito a vida do usuário quando usando um gerenciador de arquivos no ambiente gráfico é o fato de poder dar um duplo clique no ícone e o sistema já saber qual programa utilizar para abrí-lo.
+Conhecendo o xdg-open Quando estamos utilizando o terminal dentro de um ambiente gráfico podemos ter uma funcionalidade similar usando o comando xdg-open em sistemas Linux.
+Equivalentes ao comando xdg-open em outros ambientes:...</p>
+  </div>
+  <footer class="entry-footer"><span title='2020-01-07 15:41:59 -0300 -0300'>janeiro 7, 2020</span>&nbsp;·&nbsp;3 minutos&nbsp;·&nbsp;meleu</footer>
+  <a class="entry-link" aria-label="post link to Como abrir qualquer arquivo no programa correto a partir da linha de comando" href="https://meleu.sh/abrir-qualquer-arquivo/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://meleu.sh/posts/">
+      «&nbsp;Página Anterior&nbsp;
+    </a>
+    <a class="next" href="https://meleu.sh/posts/page/3/">Próxima Página&nbsp;&nbsp;»
+    </a>
+  </nav>
+</footer>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://meleu.sh/">meleu.sh</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

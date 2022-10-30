@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on meleu.sh</title>
+    <link>https://meleu.sh/tags/</link>
+    <description>Recent content in Tags on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sun, 22 May 2022 10:29:28 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>fundamentos</title>
+      <link>https://meleu.sh/tags/fundamentos/</link>
+      <pubDate>Sun, 22 May 2022 10:29:28 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/fundamentos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>boas-praticas</title>
+      <link>https://meleu.sh/tags/boas-praticas/</link>
+      <pubDate>Sat, 14 May 2022 14:14:44 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/boas-praticas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ferramentas</title>
+      <link>https://meleu.sh/tags/ferramentas/</link>
+      <pubDate>Sat, 14 May 2022 14:14:44 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/ferramentas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dotfiles</title>
+      <link>https://meleu.sh/tags/dotfiles/</link>
+      <pubDate>Thu, 28 Apr 2022 13:32:13 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/dotfiles/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://meleu.sh/tags/git/</link>
+      <pubDate>Thu, 28 Apr 2022 13:32:13 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trap</title>
+      <link>https://meleu.sh/tags/trap/</link>
+      <pubDate>Fri, 15 Apr 2022 07:09:29 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/trap/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>configuracoes</title>
+      <link>https://meleu.sh/tags/configuracoes/</link>
+      <pubDate>Wed, 30 Mar 2022 10:40:00 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/configuracoes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>codigo</title>
+      <link>https://meleu.sh/tags/codigo/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/codigo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>curl</title>
+      <link>https://meleu.sh/tags/curl/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/curl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jq</title>
+      <link>https://meleu.sh/tags/jq/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/jq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>links</title>
+      <link>https://meleu.sh/tags/links/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/links/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bash-puro</title>
+      <link>https://meleu.sh/tags/bash-puro/</link>
+      <pubDate>Sat, 25 Jan 2020 16:09:01 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tags/bash-puro/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>bash-puro on meleu.sh</title>
+    <link>https://meleu.sh/tags/bash-puro/</link>
+    <description>Recent content in bash-puro on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sat, 25 Jan 2020 16:09:01 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/bash-puro/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Como converter de maiúsculas para minúsculas (e vice-versa) com bash</title>
+      <link>https://meleu.sh/tolower-toupper/</link>
+      <pubDate>Sat, 25 Jan 2020 16:09:01 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tolower-toupper/</guid>
+      <description>Em várias linguagens nós contamos com toLower()/toUpper() para converter strings para minúsculas/maiúsculas. No bash podemos ter essa mesma funcionalidade.
+</description>
+    </item>
+    
+    <item>
+      <title>Como fazer URL encode/decode com shell script</title>
+      <link>https://meleu.sh/urlencode/</link>
+      <pubDate>Sun, 05 Jan 2020 15:12:37 -0300</pubDate>
+      
+      <guid>https://meleu.sh/urlencode/</guid>
+      <description>Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+</description>
+    </item>
+    
+    <item>
+      <title>Como checar se um array contém um determinado elemento</title>
+      <link>https://meleu.sh/elemento-presente-no-array/</link>
+      <pubDate>Fri, 03 Jan 2020 05:00:59 -0300</pubDate>
+      
+      <guid>https://meleu.sh/elemento-presente-no-array/</guid>
+      <description>Quando estamos trabalhando com arrays em shell scripts é comum termos situações onde queremos saber se um determinado elemento está presente no array.
+O bash não tem um recurso específico para isso, portanto temos que arrumar um outro jeito. Neste artigo estudaremos três maneiras de alcançar esse objetivo.
+Método 1: infalível, porém &amp;ldquo;custoso&amp;rdquo; A maneira que logo vem a mente é percorrer todo o array através de um loop e checar se o elemento está presente lá.</description>
+    </item>
+    
+  </channel>
+</rss>

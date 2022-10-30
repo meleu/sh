@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>ferramentas on meleu.sh</title>
+    <link>https://meleu.sh/tags/ferramentas/</link>
+    <description>Recent content in ferramentas on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sat, 14 May 2022 14:14:44 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/ferramentas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mantenha a consistência na formatação do seu código com shfmt</title>
+      <link>https://meleu.sh/shfmt/</link>
+      <pubDate>Sat, 14 May 2022 14:14:44 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shfmt/</guid>
+      <description>Com o shfmt, além de manter o seu código com uma formatação consistente, você também pode tornar legível aquele código obscuro que você achou por aí.
+</description>
+    </item>
+    
+    <item>
+      <title>Use shellcheck e livre-se dos bugs no seu código antes mesmo de executá-lo</title>
+      <link>https://meleu.sh/shellcheck/</link>
+      <pubDate>Wed, 04 May 2022 14:00:31 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shellcheck/</guid>
+      <description>Com o shellcheck você vai se livrar de aborrecimentos com bugs que você jamais conseguiria prever!
+</description>
+    </item>
+    
+  </channel>
+</rss>

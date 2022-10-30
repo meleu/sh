@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>trap on meleu.sh</title>
+    <link>https://meleu.sh/tags/trap/</link>
+    <description>Recent content in trap on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Fri, 15 Apr 2022 07:09:29 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/trap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Como detectar precisamente onde seu script está quebrando</title>
+      <link>https://meleu.sh/trap-err/</link>
+      <pubDate>Fri, 15 Apr 2022 07:09:29 -0300</pubDate>
+      
+      <guid>https://meleu.sh/trap-err/</guid>
+      <description>Segredinhos obscuros do bash que permitirão que você poupe muito tempo quando precisar caçar bugs. Garanto que isso vai mudar sua vida.
+</description>
+    </item>
+    
+  </channel>
+</rss>

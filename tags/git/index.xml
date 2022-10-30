@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>git on meleu.sh</title>
+    <link>https://meleu.sh/tags/git/</link>
+    <description>Recent content in git on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Thu, 28 Apr 2022 13:32:13 -0300</lastBuildDate><atom:link href="https://meleu.sh/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Uma maneira limpa e inteligente de gerenciar seus dotfiles em um repositório git</title>
+      <link>https://meleu.sh/dotfiles/</link>
+      <pubDate>Thu, 28 Apr 2022 13:32:13 -0300</pubDate>
+      
+      <guid>https://meleu.sh/dotfiles/</guid>
+      <description>Veja como alguns segredinhos do git podem tornar o gerenciamento de seus dotfiles uma coisa simples e limpa. Não instale ferramenta alguma, apenas use o git.
+</description>
+    </item>
+    
+    <item>
+      <title>Chega de commitar no repositório do trabalho com seus dados do github (e vice-versa)!</title>
+      <link>https://meleu.sh/git-multiconfig/</link>
+      <pubDate>Wed, 20 Apr 2022 12:25:19 -0300</pubDate>
+      
+      <guid>https://meleu.sh/git-multiconfig/</guid>
+      <description>Depois de ler esse artigo você também nunca mais vai commitar no github com seu email do trabalho!
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on meleu.sh</title>
+    <link>https://meleu.sh/posts/</link>
+    <description>Recent content in Posts on meleu.sh</description>
+    <image>
+      <url>https://meleu.sh/img/por-que-shell.gif</url>
+      <link>https://meleu.sh/img/por-que-shell.gif</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt</language>
+    <lastBuildDate>Sun, 22 May 2022 10:29:28 -0300</lastBuildDate><atom:link href="https://meleu.sh/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comece por aqui!</title>
+      <link>https://meleu.sh/comeco/</link>
+      <pubDate>Sun, 22 May 2022 10:29:28 -0300</pubDate>
+      
+      <guid>https://meleu.sh/comeco/</guid>
+      <description>Uma relação de material em português que eu recomendo para que você comece DO ZERO e chegue a um nível razoável de proficiência em programação shell.
+</description>
+    </item>
+    
+    <item>
+      <title>Mantenha a consistência na formatação do seu código com shfmt</title>
+      <link>https://meleu.sh/shfmt/</link>
+      <pubDate>Sat, 14 May 2022 14:14:44 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shfmt/</guid>
+      <description>Com o shfmt, além de manter o seu código com uma formatação consistente, você também pode tornar legível aquele código obscuro que você achou por aí.
+</description>
+    </item>
+    
+    <item>
+      <title>Use shellcheck e livre-se dos bugs no seu código antes mesmo de executá-lo</title>
+      <link>https://meleu.sh/shellcheck/</link>
+      <pubDate>Wed, 04 May 2022 14:00:31 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shellcheck/</guid>
+      <description>Com o shellcheck você vai se livrar de aborrecimentos com bugs que você jamais conseguiria prever!
+</description>
+    </item>
+    
+    <item>
+      <title>Uma maneira limpa e inteligente de gerenciar seus dotfiles em um repositório git</title>
+      <link>https://meleu.sh/dotfiles/</link>
+      <pubDate>Thu, 28 Apr 2022 13:32:13 -0300</pubDate>
+      
+      <guid>https://meleu.sh/dotfiles/</guid>
+      <description>Veja como alguns segredinhos do git podem tornar o gerenciamento de seus dotfiles uma coisa simples e limpa. Não instale ferramenta alguma, apenas use o git.
+</description>
+    </item>
+    
+    <item>
+      <title>Chega de commitar no repositório do trabalho com seus dados do github (e vice-versa)!</title>
+      <link>https://meleu.sh/git-multiconfig/</link>
+      <pubDate>Wed, 20 Apr 2022 12:25:19 -0300</pubDate>
+      
+      <guid>https://meleu.sh/git-multiconfig/</guid>
+      <description>Depois de ler esse artigo você também nunca mais vai commitar no github com seu email do trabalho!
+</description>
+    </item>
+    
+    <item>
+      <title>Como detectar precisamente onde seu script está quebrando</title>
+      <link>https://meleu.sh/trap-err/</link>
+      <pubDate>Fri, 15 Apr 2022 07:09:29 -0300</pubDate>
+      
+      <guid>https://meleu.sh/trap-err/</guid>
+      <description>Segredinhos obscuros do bash que permitirão que você poupe muito tempo quando precisar caçar bugs. Garanto que isso vai mudar sua vida.
+</description>
+    </item>
+    
+    <item>
+      <title>Deixe o bash mais rigoroso com seu script e evite dores de cabeça</title>
+      <link>https://meleu.sh/bash-rigoroso/</link>
+      <pubDate>Thu, 07 Apr 2022 11:08:14 -0300</pubDate>
+      
+      <guid>https://meleu.sh/bash-rigoroso/</guid>
+      <description>Habilite essas opções para deixar o bash mais exigente e interromper o seu script assim que algum problema for encontrado.
+</description>
+    </item>
+    
+    <item>
+      <title>Melhorando seu .bash_history</title>
+      <link>https://meleu.sh/bash-history/</link>
+      <pubDate>Wed, 30 Mar 2022 10:40:00 -0300</pubDate>
+      
+      <guid>https://meleu.sh/bash-history/</guid>
+      <description>Deixe o seu .bash_history um pouco mais inteligente.
+</description>
+    </item>
+    
+    <item>
+      <title>Como criar um gráfico de barras no terminal listando os países com mais ocorrências de morte pelo Coronavirus</title>
+      <link>https://meleu.sh/coronavirus-ranking/</link>
+      <pubDate>Fri, 27 Mar 2020 16:21:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus-ranking/</guid>
+      <description>Escreveremos um script que mostra, no terminal, um gráfico em barras com o ranking dos países com mais casos de morte por COVID-19 (Coronavirus).Usaremos curl, jq, e criaremos o gráfico com o termgraph.
+</description>
+    </item>
+    
+    <item>
+      <title>Consulte os números de casos e mortes causadas pelo Coronavirus diretamente do terminal</title>
+      <link>https://meleu.sh/coronavirus/</link>
+      <pubDate>Tue, 17 Mar 2020 16:19:38 -0300</pubDate>
+      
+      <guid>https://meleu.sh/coronavirus/</guid>
+      <description>Escreveremos um script para obter, diretamente no terminal, os números atualizados de casos e mortes causadas pelo COVID-19 (doença causada pelo Coronavirus). Usaremos alguns truques de curl, jq, arrays associativos e mais. Stay at /home!
+</description>
+    </item>
+    
+    <item>
+      <title>Como gerar uma URL curta no bitly direto da linha de comando</title>
+      <link>https://meleu.sh/url-shortener/</link>
+      <pubDate>Sat, 15 Feb 2020 16:17:04 -0300</pubDate>
+      
+      <guid>https://meleu.sh/url-shortener/</guid>
+      <description>Com o curl e uma conta no bitly.com podemos facilmente criar um script para termos nosso próprio &amp;#34;URL shortener&amp;#34; diretamente na linha de comando.
+</description>
+    </item>
+    
+    <item>
+      <title>Como lidar com parâmetros passados na linha de comando em shell scripts</title>
+      <link>https://meleu.sh/parametros/</link>
+      <pubDate>Sun, 02 Feb 2020 16:14:09 -0300</pubDate>
+      
+      <guid>https://meleu.sh/parametros/</guid>
+      <description>Veremos como o bash recebe dados diretamente da linha de comando, e iremos além: veja a peculiaridade do &amp;#39;$0&amp;#39; (e receba um easter egg); entenda a real diferença entre o &amp;#39;$*&amp;#39; e o &amp;#39;$@&amp;#39;; e veja  como usar os comando &amp;#39;shift&amp;#39; e &amp;#39;set&amp;#39; para manipular os parâmetros.
+</description>
+    </item>
+    
+    <item>
+      <title>Por que você deve usar aspas SEMPRE</title>
+      <link>https://meleu.sh/aspas-sempre/</link>
+      <pubDate>Sun, 26 Jan 2020 16:11:52 -0300</pubDate>
+      
+      <guid>https://meleu.sh/aspas-sempre/</guid>
+      <description>Não perca tempo pensando 🤔 &amp;#34;Será que tem problema deixar essa variável sem aspas?&amp;#34;. Simplesmente use-as SEMPRE!
+</description>
+    </item>
+    
+    <item>
+      <title>Como converter de maiúsculas para minúsculas (e vice-versa) com bash</title>
+      <link>https://meleu.sh/tolower-toupper/</link>
+      <pubDate>Sat, 25 Jan 2020 16:09:01 -0300</pubDate>
+      
+      <guid>https://meleu.sh/tolower-toupper/</guid>
+      <description>Em várias linguagens nós contamos com toLower()/toUpper() para converter strings para minúsculas/maiúsculas. No bash podemos ter essa mesma funcionalidade.
+</description>
+    </item>
+    
+    <item>
+      <title>Como ler o conteúdo de um arquivo linha por linha em shell script</title>
+      <link>https://meleu.sh/percorrer-arquivo/</link>
+      <pubDate>Tue, 21 Jan 2020 16:00:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/percorrer-arquivo/</guid>
+      <description>Veja uma maneira robusta de percorrer um arquivo linha por linha. E sem cair nas armadilhas sutis que nos trazem surpresas desagradáveis.
+</description>
+    </item>
+    
+    <item>
+      <title>here string: evitando o uso desnecessário do echo</title>
+      <link>https://meleu.sh/here-strings/</link>
+      <pubDate>Fri, 17 Jan 2020 15:58:54 -0300</pubDate>
+      
+      <guid>https://meleu.sh/here-strings/</guid>
+      <description>É comum vermos códigos usando &amp;#39;echo $var | comando&amp;#39;. Nesse artigo veremos como a técnica here strings evita este uso desnecessário do echo, melhorando a legibilidade e performance do seu código (também veremos raras situações onde essa técnica não nos atende).
+</description>
+    </item>
+    
+    <item>
+      <title>explainshell: obtendo uma explicação rápida de uma linha de comando e cada um dos seus argumentos</title>
+      <link>https://meleu.sh/explainshell/</link>
+      <pubDate>Tue, 14 Jan 2020 15:53:34 -0300</pubDate>
+      
+      <guid>https://meleu.sh/explainshell/</guid>
+      <description>Escreva uma linha de comando inteira (pode incluir pipes e redirecionamentos) e veja uma explicação de cada comando e cada um de seus argumentos.
+</description>
+    </item>
+    
+    <item>
+      <title>Uma dica simples que vai fazer você ganhar muito tempo quando estiver escrevendo shell scripts</title>
+      <link>https://meleu.sh/dica-result/</link>
+      <pubDate>Sat, 11 Jan 2020 15:51:17 -0300</pubDate>
+      
+      <guid>https://meleu.sh/dica-result/</guid>
+      <description>Veja como um simples alias pode te ajudar a economizar muito tempo quando estiver escrevendo e testando trechos dos seus scripts.
+</description>
+    </item>
+    
+    <item>
+      <title>Por que você deveria aprender sobre shell e linha de comando?</title>
+      <link>https://meleu.sh/por-que-shell/</link>
+      <pubDate>Fri, 10 Jan 2020 15:48:11 -0300</pubDate>
+      
+      <guid>https://meleu.sh/por-que-shell/</guid>
+      <description>O shell continua resistindo ao teste do tempo e é praticamente onipresente. Seja você um estudante ou profissional de qualquer área de TI (ou até mesmo aquele adolescente que sonha ser um hackão que vai dominar o mundo) aprender sobre a linha de comando certamente lhe trará grandes benefícios.
+</description>
+    </item>
+    
+    <item>
+      <title>Como abrir qualquer arquivo no programa correto a partir da linha de comando</title>
+      <link>https://meleu.sh/abrir-qualquer-arquivo/</link>
+      <pubDate>Tue, 07 Jan 2020 15:41:59 -0300</pubDate>
+      
+      <guid>https://meleu.sh/abrir-qualquer-arquivo/</guid>
+      <description>No ambiente gráfico basta dar um duplo clique no arquivo que ele abre no programa correto. Veja como obter o mesmo resultado na linha de comando.
+</description>
+    </item>
+    
+    <item>
+      <title>Como fazer URL encode/decode com shell script</title>
+      <link>https://meleu.sh/urlencode/</link>
+      <pubDate>Sun, 05 Jan 2020 15:12:37 -0300</pubDate>
+      
+      <guid>https://meleu.sh/urlencode/</guid>
+      <description>Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+</description>
+    </item>
+    
+    <item>
+      <title>Como checar se um array contém um determinado elemento</title>
+      <link>https://meleu.sh/elemento-presente-no-array/</link>
+      <pubDate>Fri, 03 Jan 2020 05:00:59 -0300</pubDate>
+      
+      <guid>https://meleu.sh/elemento-presente-no-array/</guid>
+      <description>Quando estamos trabalhando com arrays em shell scripts é comum termos situações onde queremos saber se um determinado elemento está presente no array.
+O bash não tem um recurso específico para isso, portanto temos que arrumar um outro jeito. Neste artigo estudaremos três maneiras de alcançar esse objetivo.
+Método 1: infalível, porém &amp;ldquo;custoso&amp;rdquo; A maneira que logo vem a mente é percorrer todo o array através de um loop e checar se o elemento está presente lá.</description>
+    </item>
+    
+    <item>
+      <title>Como juntar elementos de um array separando-os com um caracter qualquer</title>
+      <link>https://meleu.sh/join-bash/</link>
+      <pubDate>Tue, 31 Dec 2019 14:46:31 -0300</pubDate>
+      
+      <guid>https://meleu.sh/join-bash/</guid>
+      <description>Algumas linguagens (como JavaScript e PHP) possuem uma função &amp;#39;join()&amp;#39; (ou &amp;#39;implode()&amp;#39;) que serve para juntar os elementos de um array separando-os por um caracter. Vamos ver aqui uma maneira simples de fazer isso em bash.
+</description>
+    </item>
+    
+    <item>
+      <title>cheat.sh: obtendo exemplos e macetes dos mais diversos comandos</title>
+      <link>https://meleu.sh/cheat-sh/</link>
+      <pubDate>Fri, 27 Dec 2019 05:00:13 -0300</pubDate>
+      
+      <guid>https://meleu.sh/cheat-sh/</guid>
+      <description>Descubra como o cheat.sh vai facilitar sua vida te mostrando rapidamente vários macetes e exemplos de uso dos mais diversos comandos. Podendo inclusive ser acessado diretamente da linha de comando.
+</description>
+    </item>
+    
+    <item>
+      <title>O que o #! realmente faz?</title>
+      <link>https://meleu.sh/shebang/</link>
+      <pubDate>Sat, 21 Dec 2019 00:24:42 -0300</pubDate>
+      
+      <guid>https://meleu.sh/shebang/</guid>
+      <description>O que exatamente acontece quando executamos um arquivo que começa com &amp;#39;#!&amp;#39; - também conhecido como shebang.
+</description>
+    </item>
+    
+  </channel>
+</rss>

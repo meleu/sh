@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Como fazer URL encode/decode com shell script | meleu.sh</title>
+<meta name="keywords" content="bash-puro, codigo">
+<meta name="description" content="Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+">
+<meta name="author" content="meleu">
+<link rel="canonical" href="https://meleu.sh/urlencode/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://meleu.sh/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://meleu.sh/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://meleu.sh/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://meleu.sh/apple-touch-icon.png">
+<link rel="mask-icon" href="https://meleu.sh/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Como fazer URL encode/decode com shell script" />
+<meta property="og:description" content="Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://meleu.sh/urlencode/" />
+<meta property="og:image" content="https://meleu.sh/img/urlencode.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-01-05T15:12:37-03:00" />
+<meta property="article:modified_time" content="2020-01-05T15:12:37-03:00" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://meleu.sh/img/urlencode.png" />
+<meta name="twitter:title" content="Como fazer URL encode/decode com shell script"/>
+<meta name="twitter:description" content="Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://meleu.sh/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Como fazer URL encode/decode com shell script",
+      "item": "https://meleu.sh/urlencode/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como fazer URL encode/decode com shell script",
+  "name": "Como fazer URL encode\/decode com shell script",
+  "description": "Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.\n",
+  "keywords": [
+    "bash-puro", "codigo"
+  ],
+  "articleBody": "Quando estamos trabalhando com URLs e/ou APIs REST, precisamos com frequência converter uma string para um formato válido de URL, conhecido como URL encoded. Se estivermos trabalhando com o curl é tranquilo, já temos a nossa disposição a opção --data-urlencode. Mas quando não vamos usar o curl, podemos implementar nossa própria solução usando bash puro.\nurlencode() Eis o código:\n#!/usr/bin/env bash # # urlencode - codificando sua string para usar em URLs urlencode() { local LC_ALL=C local string=\"$*\" local length=\"${#string}\" local char for (( i = 0; i Exemplo de uso Vejamos o código em ação:\n$ ./urlencode isso é só a minha codificação isso%20%C3%A9%20s%C3%B3%20a%20minha%20codifica%C3%A7%C3%A3o $ ./urlencode https://meleu.sh/ https%3A%2F%2Fmeleu.sh%2F Explicando o código Vamos a uma explicação detalhada do que está acontecendo em cada trecho da função:\n local LC_ALL=C A variável de ambiente LC_ALL serve para forçar um comportamento “portável” para todas as configurações de localização existentes. Usamos o modificador local para que a alteração do LC_ALL seja feita apenas no escopo da função, não alterando seu comportamento globalmente. Ou seja, ao final da função, o LC_ALL de quem chamou a função urlencode não terá sido alterado.\nAgora deixa eu tentar explicar pra que serve o LC_ALL.\nSe você for no seu terminal e digitar o comando locale, você verá uma lista de variáveis começando com LC_. Elas definem alguns comportamentos do sistema no que se refere as especificidades de cada localização.\nEste recurso têm por objetivo tornar o sistema mais familiar e amigável à linguagem do usuário. E quando usamos LC_ALL=C é como se estivéssemos dizendo para o shell que queremos usar configurações de Unix “original”.\nPor exemplo, aqui no Brasil nós temos letras acentuadas, nosso separador de decimal é , vírgula, nossa moeda é representada por R$, etc. Todas essas configurações são definidas nas variávels LC_*, e a variável LC_ALL serve para impor seu valor sobre todas as outras variáveis LC_* (ex.: se você tem LC_NUMERIC=\"pt_BR.UTF-8\" e LC_ALL=\"C\", seu sistema vai se comportar como se LC_NUMERIC=\"C\").\nUm dos motivos de definirmos LC_ALL=C aqui, é para que as nossas letras acentuadas não “casem” com o padrão [a-zA-Z]. O exemplo a seguir mostra isso bem claramente:\n$ LC_ALL='pt_BR.UTF-8' $ [[ é = [a-z] ]] \u0026\u0026 echo sim || echo nao sim $ # com 'pt_BR.UTF-8', o caracter 'é' está dentro do intervalo [a-z] $ LC_ALL='C' $ [[ é = [a-z] ]] \u0026\u0026 echo sim || echo nao nao $ # com 'C', o mesmo caractere nao esta no intervalo [a-z] $ # (e eu tambem nao consigo escrever letras acentuadas normalmente) Espero ter ficado claro. Agora vamos prosseguir com o código:\n local string=\"$*\" local length=\"${#string}\" local char Primeiro pegamos todos os argumentos e colocamos na variável string. Em seguida armazenamos em length o número de caracteres presentes em string.\nA variável char será usada para analisarmos cada caracter de string no loop que vem a seguir\n for (( i = 0; i Um loop for estilo C foi utilizado para facilitar a manipulação do índice i.\nO que acontece em char=\"${string:i:1}\" é atribuir à char apenas o caractere presente na posição i da string. Aquela sintaxe significa algo assim: ${string:posicaoInicial:numeroDeCaracteres}. Portanto, a cada iteração do loop estamos testando apenas um caractere da string.\nNo if checamos se o caracter é válido para URLs. Lembra daquele LC_ALL=C que usamos lá no começo da função? Ele serve para nos ajudar aqui.\nA lista de caracteres válidos para URL são dígitos de 0 a 9, letras maiúsculas e minúsculas de A a Z, traço -, ponto ., sublinhado _ e til ~. Escrevendo esse padrão para bash temos [a-zA-Z0-9.~_-]\nSe o caracter for válido, simplesmente imprime. Mas se for inválido (o else), executaremos um printf um pouco obscuro, e que precisa de uma explicação mais detalhada:\n printf '%%%02X' \"'$char\" A sequência %%%02X significa:\n %%: um % sinal de percentual literal %02X: formato hexadecimal, usando letras maiúsculas para A-F, com dois dígitos e precedido de 0 zero se necessário.  O argumento \"'$char\" tem uma pequena sutileza: aquela ' aspa simples única no começo (observe que não tem o “fechamento” dela no final). Essa aspa simples significa que você quer passar o valor ASCII numérico do caractere que vem a seguir.\nVeja esse exemplo pra ficar mais claro:\n$ printf \"%d\\n\" \"a\" -bash: printf: a: número inválido 0 $ # lembrando: 'a' em decimal na tabela ASCII, é 97 $ printf \"%d\\n\" \"'a\" 97 Pois é amigos… Esse macetinho obscuro está “escondido” lá manpage do bash, na parte que explica sobre o printf. Ali no penúltimo parágrafo, como quem não quer nada, tem uma frasezinha dizendo (tradução livre):\n (…) se o primeiro caractere é uma aspa simples ou dupla, o valor será o valor ASCII do caractere a seguir.\n Agora, lembra daquele LC_ALL=C lá do início da função? Também precisamos dele aqui para que esse printf gere a saída que precisamos. Veja só a diferença:\n$ LC_ALL='pt_BR.UTF-8' $ printf '%d\\n' \"'á\" 225 $ LC_ALL=C $ printf '%d\\n' \"'á\" 195 E assim acabamos o loop.\nPor fim temos um opcional\n printf '\\n' # opcional Apenas para colocar uma nova linha no final da string.\nurldecode() Para decodificar é um pouco mais simples:\n#!/usr/bin/env bash # # urldecode - decodificando de urlencoded para texto legível urldecode() { local encoded=\"${*//+/ }\" printf '%b\\n' \"${encoded//%/\\\\x}\" # o '\\n' acima é opcional } urldecode \"$@\" Exemplo de uso $ ./urldecode 'https%3A%2F%2Fmeleu.sh%2F' https://meleu.sh/ Explicando o código A primeira linha coloca em encoded todos os argumentos passados para a função, substituindo + por   espaço em branco.\nNa linha do printf, especificamente no trecho ${encoded//%/\\\\x} pegamos o encoded e substituímos todos os sinais de % porcentagem por \\x.\nDemonstração:\n$ encoded='%3A' $ echo \"${encoded//%/\\\\x}\" \\x3A Uma vez que substituímos todos os % por \\x, o printf %b finaliza o serviço, pois o formato %b serve exatamente para lidar com essas sequencias de escape com contrabarra.\nDemonstração:\n$ printf '%b\\n' '\\x3A' : Portanto, o resultado do printf já será o conteúdo de encoded com os códigos hexadecimais já devidamente “traduzidos” para o caractere legível correspondente.\nUfa! Por hoje é “só”…\nFontes  https://github.com/dylanaraps/pure-bash-bible#percent-encode-a-string https://wiki.archlinux.org/index.php/locale#Variables https://wiki-dev.bash-hackers.org/commands/builtin/printf https://www.tldp.org/LDP/abs/html/parameter-substitution.html#EXPREPL1 man bash, explicação sobre printf  ",
+  "wordCount" : "1064",
+  "inLanguage": "pt",
+  "image":"https://meleu.sh/img/urlencode.png","datePublished": "2020-01-05T15:12:37-03:00",
+  "dateModified": "2020-01-05T15:12:37-03:00",
+  "author":{
+    "@type": "Person",
+    "name": "meleu"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://meleu.sh/urlencode/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "meleu.sh",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://meleu.sh/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://meleu.sh/" accesskey="h" title="meleu.sh (Alt + H)">meleu.sh</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://meleu.sh/historico/" title="histórico">
+                    <span>histórico</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/busca/" title="busca">
+                    <span>busca</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://meleu.sh/sobre/" title="sobre">
+                    <span>sobre</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://meleu.sh/">Home</a>&nbsp;»&nbsp;<a href="https://meleu.sh/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Como fazer URL encode/decode com shell script
+    </h1>
+    <div class="post-description">
+      Escreva sua própria função para codificar uma string para um formato válido para URL usando bash puro - urlencode/urldecode.
+
+    </div>
+    <div class="post-meta"><span title='2020-01-05 15:12:37 -0300 -0300'>janeiro 5, 2020</span>&nbsp;·&nbsp;5 minutos&nbsp;·&nbsp;meleu&nbsp;|&nbsp;<a href="https://github.com/meleu/meleudotsh/edit/master/content/posts/urlencode.md" rel="noopener noreferrer" target="_blank">✏️ Edite este artigo</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://meleu.sh/img/urlencode.png" alt="output de urlencode e urldecode">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Conteúdo</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#urlencode" aria-label="urlencode()">urlencode()</a><ul>
+                        
+                <li>
+                    <a href="#exemplo-de-uso" aria-label="Exemplo de uso">Exemplo de uso</a></li>
+                <li>
+                    <a href="#explicando-o-c%c3%b3digo" aria-label="Explicando o código">Explicando o código</a></li></ul>
+                </li>
+                <li>
+                    <a href="#urldecode" aria-label="urldecode()">urldecode()</a><ul>
+                        
+                <li>
+                    <a href="#exemplo-de-uso-1" aria-label="Exemplo de uso">Exemplo de uso</a></li>
+                <li>
+                    <a href="#explicando-o-c%c3%b3digo-1" aria-label="Explicando o código">Explicando o código</a></li></ul>
+                </li>
+                <li>
+                    <a href="#fontes" aria-label="Fontes">Fontes</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Quando estamos trabalhando com URLs e/ou APIs REST, precisamos com frequência converter uma string para um formato válido de URL, conhecido como <em>URL encoded</em>. Se estivermos trabalhando com o <code>curl</code> é tranquilo, já temos a nossa disposição a opção <code>--data-urlencode</code>. Mas quando não vamos usar o <code>curl</code>, podemos implementar nossa própria solução usando bash puro.</p>
+<h2 id="urlencode">urlencode()<a hidden class="anchor" aria-hidden="true" href="#urlencode">#</a></h2>
+<p>Eis o código:</p>
+<pre tabindex="0"><code>#!/usr/bin/env bash
+#
+# urlencode - codificando sua string para usar em URLs
+
+urlencode() {
+  local LC_ALL=C
+  local string=&#34;$*&#34;
+  local length=&#34;${#string}&#34;
+  local char
+
+  for (( i = 0; i &lt; length; i++ )); do
+    char=&#34;${string:i:1}&#34;
+    if [[ &#34;$char&#34; == [a-zA-Z0-9.~_-] ]]; then
+      printf &#34;$char&#34; 
+    else
+      printf &#39;%%%02X&#39; &#34;&#39;$char&#34; 
+    fi
+  done
+  printf &#39;\n&#39; # opcional
+}
+
+urlencode &#34;$@&#34;
+</code></pre><h3 id="exemplo-de-uso">Exemplo de uso<a hidden class="anchor" aria-hidden="true" href="#exemplo-de-uso">#</a></h3>
+<p>Vejamos o código em ação:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell-session" data-lang="shell-session"><span style="display:flex;"><span>$ ./urlencode isso é só a minha codificação
+</span></span><span style="display:flex;"><span>isso%20%C3%A9%20s%C3%B3%20a%20minha%20codifica%C3%A7%C3%A3o
+</span></span><span style="display:flex;"><span>$ ./urlencode https://meleu.sh/
+</span></span><span style="display:flex;"><span>https%3A%2F%2Fmeleu.sh%2F
+</span></span></code></pre></div><h3 id="explicando-o-código">Explicando o código<a hidden class="anchor" aria-hidden="true" href="#explicando-o-código">#</a></h3>
+<p>Vamos a uma explicação detalhada do que está acontecendo em cada trecho da função:</p>
+<pre tabindex="0"><code>  local LC_ALL=C
+</code></pre><p>A variável de ambiente <code>LC_ALL</code> serve para forçar um comportamento &ldquo;portável&rdquo; para todas as configurações de localização existentes. Usamos o modificador <code>local</code> para que a alteração do <code>LC_ALL</code> seja feita apenas no escopo da função, não alterando seu comportamento globalmente. Ou seja, ao final da função, o <code>LC_ALL</code> de quem chamou a função <code>urlencode</code> não terá sido alterado.</p>
+<p>Agora deixa eu tentar explicar pra que serve o <code>LC_ALL</code>.</p>
+<p>Se você for no seu terminal e digitar o comando <code>locale</code>, você verá uma lista de variáveis começando com <code>LC_</code>. Elas definem alguns comportamentos do sistema no que se refere as especificidades de cada localização.</p>
+<p>Este recurso têm por objetivo tornar o sistema mais familiar e amigável à linguagem do usuário. E quando usamos <code>LC_ALL=C</code> é como se estivéssemos dizendo para o shell que queremos usar configurações de Unix &ldquo;original&rdquo;.</p>
+<p>Por exemplo, aqui no Brasil nós temos letras acentuadas, nosso separador de decimal é <code>,</code> vírgula, nossa moeda é representada por <code>R$</code>, etc. Todas essas configurações são definidas nas variávels <code>LC_*</code>, e a variável <code>LC_ALL</code> serve para impor seu valor sobre todas as outras variáveis <code>LC_*</code> (ex.: se você tem <code>LC_NUMERIC=&quot;pt_BR.UTF-8&quot;</code> e <code>LC_ALL=&quot;C&quot;</code>, seu sistema vai se comportar como se <code>LC_NUMERIC=&quot;C&quot;</code>).</p>
+<p>Um dos motivos de definirmos <code>LC_ALL=C</code> aqui, é para que as nossas letras acentuadas não &ldquo;casem&rdquo; com o padrão <code>[a-zA-Z]</code>. O exemplo a seguir mostra isso bem claramente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell-session" data-lang="shell-session"><span style="display:flex;"><span>$ LC_ALL<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pt_BR.UTF-8&#39;</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#f92672">[[</span> é <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>a-z<span style="color:#f92672">]</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo sim <span style="color:#f92672">||</span> echo nao
+</span></span><span style="display:flex;"><span>sim
+</span></span><span style="display:flex;"><span>$ <span style="color:#75715e"># com &#39;pt_BR.UTF-8&#39;, o caracter &#39;é&#39; está dentro do intervalo [a-z]</span>
+</span></span><span style="display:flex;"><span>$ LC_ALL<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C&#39;</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#f92672">[[</span> é <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>a-z<span style="color:#f92672">]</span> <span style="color:#f92672">]]</span> <span style="color:#f92672">&amp;&amp;</span> echo sim <span style="color:#f92672">||</span> echo nao
+</span></span><span style="display:flex;"><span>nao
+</span></span><span style="display:flex;"><span>$ <span style="color:#75715e"># com &#39;C&#39;, o mesmo caractere nao esta no intervalo [a-z]</span>
+</span></span><span style="display:flex;"><span>$ <span style="color:#75715e"># (e eu tambem nao consigo escrever letras acentuadas normalmente)</span>
+</span></span></code></pre></div><p>Espero ter ficado claro. Agora vamos prosseguir com o código:</p>
+<pre tabindex="0"><code>  local string=&#34;$*&#34;
+  local length=&#34;${#string}&#34;
+  local char
+</code></pre><p>Primeiro pegamos todos os argumentos e colocamos na variável <code>string</code>. Em seguida armazenamos em <code>length</code> o número de caracteres presentes em <code>string</code>.</p>
+<p>A variável <code>char</code> será usada para analisarmos cada caracter de <code>string</code> no loop que vem a seguir</p>
+<pre tabindex="0"><code>  for (( i = 0; i &lt; length; i++ )); do
+    char=&#34;${string:i:1}&#34;
+    if [[ &#34;$char&#34; == [a-zA-Z0-9.~_-] ]]; then
+      printf &#34;$char&#34; 
+    else
+      printf &#39;%%%02X&#39; &#34;&#39;$char&#34; 
+    fi
+  done
+</code></pre><p>Um loop <code>for</code> estilo C foi utilizado para facilitar a manipulação do índice <code>i</code>.</p>
+<p>O que acontece em <code>char=&quot;${string:i:1}&quot;</code> é atribuir à <code>char</code> apenas o caractere presente na posição <code>i</code> da <code>string</code>. Aquela sintaxe significa algo assim: <code>${string:posicaoInicial:numeroDeCaracteres}</code>. Portanto, a cada iteração do loop estamos testando apenas um caractere da string.</p>
+<p>No <code>if</code> checamos se o caracter é válido para URLs. Lembra daquele <code>LC_ALL=C</code> que usamos lá no começo da função? Ele serve para nos ajudar aqui.</p>
+<p>A lista de caracteres válidos para URL são dígitos de <code>0</code> a <code>9</code>, letras maiúsculas e minúsculas de <code>A</code> a <code>Z</code>, traço <code>-</code>, ponto <code>.</code>, sublinhado <code>_</code> e til <code>~</code>. Escrevendo esse padrão para bash temos <code>[a-zA-Z0-9.~_-]</code></p>
+<p>Se o caracter for válido, simplesmente imprime. Mas se for inválido (o <code>else</code>), executaremos um <code>printf</code> um pouco obscuro, e que precisa de uma explicação mais detalhada:</p>
+<pre tabindex="0"><code>      printf &#39;%%%02X&#39; &#34;&#39;$char&#34; 
+</code></pre><p>A sequência <code>%%%02X</code> significa:</p>
+<ul>
+<li><code>%%</code>: um <code>%</code> sinal de percentual literal</li>
+<li><code>%02X</code>: formato hexadecimal, usando letras maiúsculas para <code>A-F</code>, com dois dígitos e precedido de <code>0</code> zero se necessário.</li>
+</ul>
+<p>O argumento <code>&quot;'$char&quot;</code> tem uma pequena sutileza: aquela <code>'</code> aspa simples única no começo (observe que não tem o &ldquo;fechamento&rdquo; dela no final). Essa aspa simples significa que você quer passar o valor ASCII numérico do caractere que vem a seguir.</p>
+<p>Veja esse exemplo pra ficar mais claro:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell-session" data-lang="shell-session"><span style="display:flex;"><span>$ printf <span style="color:#e6db74">&#34;%d\n&#34;</span> <span style="color:#e6db74">&#34;a&#34;</span>
+</span></span><span style="display:flex;"><span>-bash: printf: a: número inválido
+</span></span><span style="display:flex;"><span>0
+</span></span><span style="display:flex;"><span>$ <span style="color:#75715e"># lembrando: &#39;a&#39; em decimal na tabela ASCII, é 97</span>
+</span></span><span style="display:flex;"><span>$ printf <span style="color:#e6db74">&#34;%d\n&#34;</span> <span style="color:#e6db74">&#34;&#39;a&#34;</span>
+</span></span><span style="display:flex;"><span>97
+</span></span></code></pre></div><p>Pois é amigos&hellip; Esse macetinho obscuro está &ldquo;escondido&rdquo; lá manpage do bash, na parte que explica sobre o <code>printf</code>. Ali no penúltimo parágrafo, como quem não quer nada, tem uma frasezinha dizendo (tradução livre):</p>
+<blockquote>
+<p>(&hellip;) se o primeiro caractere é uma aspa simples ou dupla, o valor será o valor ASCII do caractere a seguir.</p>
+</blockquote>
+<p>Agora, lembra daquele <code>LC_ALL=C</code> lá do início da função? Também precisamos dele aqui para que esse <code>printf</code> gere a saída que precisamos. Veja só a diferença:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell-session" data-lang="shell-session"><span style="display:flex;"><span>$ LC_ALL<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pt_BR.UTF-8&#39;</span>
+</span></span><span style="display:flex;"><span>$ printf <span style="color:#e6db74">&#39;%d\n&#39;</span> <span style="color:#e6db74">&#34;&#39;á&#34;</span>
+</span></span><span style="display:flex;"><span>225
+</span></span><span style="display:flex;"><span>$ LC_ALL<span style="color:#f92672">=</span>C
+</span></span><span style="display:flex;"><span>$ printf <span style="color:#e6db74">&#39;%d\n&#39;</span> <span style="color:#e6db74">&#34;&#39;á&#34;</span>
+</span></span><span style="display:flex;"><span>195
+</span></span></code></pre></div><p>E assim acabamos o loop.</p>
+<p>Por fim temos um opcional</p>
+<pre tabindex="0"><code>  printf &#39;\n&#39; # opcional
+</code></pre><p>Apenas para colocar uma nova linha no final da string.</p>
+<h2 id="urldecode">urldecode()<a hidden class="anchor" aria-hidden="true" href="#urldecode">#</a></h2>
+<p>Para decodificar é um pouco mais simples:</p>
+<pre tabindex="0"><code>#!/usr/bin/env bash
+#
+# urldecode - decodificando de urlencoded para texto legível
+
+urldecode() {
+  local encoded=&#34;${*//+/ }&#34;
+  printf &#39;%b\n&#39; &#34;${encoded//%/\\x}&#34;
+  # o &#39;\n&#39; acima é opcional
+}
+
+urldecode &#34;$@&#34;
+</code></pre><h3 id="exemplo-de-uso-1">Exemplo de uso<a hidden class="anchor" aria-hidden="true" href="#exemplo-de-uso-1">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell-session" data-lang="shell-session"><span style="display:flex;"><span>$ ./urldecode <span style="color:#e6db74">&#39;https%3A%2F%2Fmeleu.sh%2F&#39;</span>
+</span></span><span style="display:flex;"><span>https://meleu.sh/
+</span></span></code></pre></div><h3 id="explicando-o-código-1">Explicando o código<a hidden class="anchor" aria-hidden="true" href="#explicando-o-código-1">#</a></h3>
+<p>A primeira linha coloca em <code>encoded</code> todos os argumentos passados para a função, substituindo <code>+</code> por <code> </code> espaço em branco.</p>
+<p>Na linha do <code>printf</code>, especificamente no trecho <code>${encoded//%/\\x}</code> pegamos o <code>encoded</code> e substituímos todos os sinais de <code>%</code> porcentagem por <code>\x</code>.</p>
+<p>Demonstração:</p>
+<pre tabindex="0"><code>$ encoded=&#39;%3A&#39;
+$ echo &#34;${encoded//%/\\x}&#34;
+\x3A
+</code></pre><p>Uma vez que substituímos todos os <code>%</code> por <code>\x</code>, o <code>printf %b</code> finaliza o serviço, pois o formato <code>%b</code> serve exatamente para lidar com essas sequencias de escape com contrabarra.</p>
+<p>Demonstração:</p>
+<pre tabindex="0"><code>$ printf &#39;%b\n&#39; &#39;\x3A&#39;
+:
+</code></pre><p>Portanto, o resultado do <code>printf</code> já será o conteúdo de <code>encoded</code> com os códigos hexadecimais já devidamente &ldquo;traduzidos&rdquo; para o caractere legível correspondente.</p>
+<p>Ufa! Por hoje é &ldquo;só&rdquo;&hellip;</p>
+<h2 id="fontes">Fontes<a hidden class="anchor" aria-hidden="true" href="#fontes">#</a></h2>
+<ul>
+<li><a href="https://github.com/dylanaraps/pure-bash-bible#percent-encode-a-string">https://github.com/dylanaraps/pure-bash-bible#percent-encode-a-string</a></li>
+<li><a href="https://wiki.archlinux.org/index.php/locale#Variables">https://wiki.archlinux.org/index.php/locale#Variables</a></li>
+<li><a href="https://wiki-dev.bash-hackers.org/commands/builtin/printf">https://wiki-dev.bash-hackers.org/commands/builtin/printf</a></li>
+<li><a href="https://www.tldp.org/LDP/abs/html/parameter-substitution.html#EXPREPL1">https://www.tldp.org/LDP/abs/html/parameter-substitution.html#EXPREPL1</a></li>
+<li><code>man bash</code>, explicação sobre <code>printf</code></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://meleu.sh/tags/bash-puro/">bash-puro</a></li>
+      <li><a href="https://meleu.sh/tags/codigo/">codigo</a></li>
+    </ul>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on twitter"
+        href="https://twitter.com/intent/tweet/?text=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script&amp;url=https%3a%2f%2fmeleu.sh%2furlencode%2f&amp;hashtags=bash-puro%2ccodigo">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmeleu.sh%2furlencode%2f&amp;title=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script&amp;summary=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script&amp;source=https%3a%2f%2fmeleu.sh%2furlencode%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2fmeleu.sh%2furlencode%2f&title=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fmeleu.sh%2furlencode%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on whatsapp"
+        href="https://api.whatsapp.com/send?text=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script%20-%20https%3a%2f%2fmeleu.sh%2furlencode%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Como fazer URL encode/decode com shell script on telegram"
+        href="https://telegram.me/share/url?text=Como%20fazer%20URL%20encode%2fdecode%20com%20shell%20script&amp;url=https%3a%2f%2fmeleu.sh%2furlencode%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://meleu.sh/">meleu.sh</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
